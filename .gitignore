@@ -1,1 +1,7 @@
+bin/
+gen/
 obj/
+build.xml
+local.properties
+project.properties
+proguard-project.txt
