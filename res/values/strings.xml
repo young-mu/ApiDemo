@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">JNIitf</string>
+    <string name="downcall_button">JNI downcall</string>
+    <string name="downcall_onload_button">JNI downcall (onload)</string>
+    <string name="upcall_button">JNI upcall</string>
+    <string name="invoke_button">JNI invoke</string>
+    <string name="downcall_text">JNI downcall</string>
+    <string name="downcall_onload_text">JNI downcall (onload)</string>
+    <string name="upcall_text">JNI upcall</string>
+    <string name="invoke_text">JNI invoke</string>
+</resources>
