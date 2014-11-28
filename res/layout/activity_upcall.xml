@@ -7,6 +7,18 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:orientation="vertical" >
 
+    <Button
+        android:id="@+id/uc_method_button1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/uc_method_button1" />
+
+    <Button
+        android:id="@+id/uc_method_button2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/uc_method_button2" />
+
     <TextView
         android:id="@+id/upcall_text"
         android:layout_width="match_parent"
