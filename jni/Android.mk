@@ -12,3 +12,8 @@ LOCAL_SRC_FILES := downcall_onload.c
 LOCAL_LDFLAGS := -llog
 include $(BUILD_SHARED_LIBRARY)
 
+include $(CLEAR_VARS)
+LOCAL_MODULE := upcall
+LOCAL_SRC_FILES := upcall.c
+LOCAL_LDFLAGS := -llog
+include $(BUILD_SHARED_LIBRARY)
