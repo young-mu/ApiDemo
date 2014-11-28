@@ -8,21 +8,9 @@
     android:orientation="vertical" >
 
     <Button
-        android:id="@+id/iv_method_button1"
+        android:id="@+id/iv_method_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/iv_method_button1" />
-
-    <Button
-        android:id="@+id/dc_method_button2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/iv_method_button2" />
-
-    <TextView
-        android:id="@+id/invoke_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/invoke_text" />
+        android:text="@string/iv_method_button" />
 
 </LinearLayout>

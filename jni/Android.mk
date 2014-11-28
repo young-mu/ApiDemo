@@ -17,3 +17,9 @@ LOCAL_MODULE := upcall
 LOCAL_SRC_FILES := upcall.c
 LOCAL_LDFLAGS := -llog
 include $(BUILD_SHARED_LIBRARY)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE := invoke
+LOCAL_SRC_FILES := invoke.c
+LOCAL_LDFLAGS := -llog
+include $(BUILD_SHARED_LIBRARY)

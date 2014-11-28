@@ -19,7 +19,5 @@
     <string name="uc_method_button2">Upcall Method 2</string>
     <string name="upcall_text">Default : JNI upcall</string>
     <!-- res/layout/activity_invoke.xml -->
-    <string name="iv_method_button1">Invoke Method 1</string>
-    <string name="iv_method_button2">Invoke Method 2</string>
-    <string name="invoke_text">Default : JNI invoke</string>
+    <string name="iv_method_button">Invoke Method</string>
 </resources>
