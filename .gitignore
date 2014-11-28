@@ -1,6 +1,7 @@
 bin/
 gen/
 obj/
+libs/armeabi/
 build.xml
 local.properties
 project.properties
