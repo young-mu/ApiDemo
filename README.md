@@ -8,5 +8,5 @@ Usages:
 <pre><code>
 \# cd JNIitf
 \# android list target (choose SDK target ID)
-\# ./make
+\# ./make <id>
 </pre></code>
