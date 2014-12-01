@@ -1,6 +1,7 @@
 #include "_log.h"
 #include <string.h>
 #include <jni.h>
+#include <dlfcn.h>
 
 #define NELEM(x) ((int)(sizeof(x) / sizeof(x[0])))
 

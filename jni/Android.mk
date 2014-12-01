@@ -15,7 +15,7 @@ include $(BUILD_SHARED_LIBRARY)
 include $(CLEAR_VARS)
 LOCAL_MODULE := downcall_onload
 LOCAL_SRC_FILES := downcall_onload.c
-LOCAL_LDFLAGS := -llog
+LOCAL_LDFLAGS := -llog -ldl
 include $(BUILD_SHARED_LIBRARY)
 
 include $(CLEAR_VARS)
