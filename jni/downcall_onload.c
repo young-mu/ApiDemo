@@ -5,19 +5,19 @@
 
 #define NELEM(x) ((int)(sizeof(x) / sizeof(x[0])))
 
-jstring downcallOnloadMtd1(JNIEnv *env, jobject obj) {
+jstring DowncallOnloadActivity_downcallOnloadMtd1(JNIEnv *env, jobject obj) {
     LOGI("trigger downcall! (%s)", __func__);
     return (*env)->NewStringUTF(env, "Here is in downcall onload method 1");
 }
 
-jstring downcallOnloadMtd2(JNIEnv *env, jobject obj) {
+jstring DowncallOnloadActivity_downcallOnloadMtd2(JNIEnv *env, jobject obj) {
     LOGI("trigger downcall! (%s)", __func__);
     return (*env)->NewStringUTF(env, "Here is in downcall onload method 2");
 }
 
 static JNINativeMethod gMethods[] = {
-    {"downcallOnloadMtd1", "()Ljava/lang/String;", (void*)downcallOnloadMtd1},
-    {"downcallOnloadMtd2", "()Ljava/lang/String;", (void*)downcallOnloadMtd2},
+    {"downcallOnloadMtd1", "()Ljava/lang/String;", (void*)DowncallOnloadActivity_downcallOnloadMtd1},
+    {"downcallOnloadMtd2", "()Ljava/lang/String;", (void*)DowncallOnloadActivity_downcallOnloadMtd2},
 };
 
 int JNI_OnLoad(JavaVM *vm, void *reserved) {
