@@ -1,7 +1,6 @@
 #include "_log.h"
 #include <string.h>
 #include <jni.h>
-#include <android/log.h>
 
 #define NELEM(x) ((int)(sizeof(x) / sizeof(x[0])))
 

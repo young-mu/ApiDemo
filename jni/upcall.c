@@ -1,7 +1,6 @@
 #include "_log.h"
 #include <string.h>
 #include <jni.h>
-#include <android/log.h>
 
 jstring Java_com_young_jniinterface_UpcallActivity_downcallMtd1(JNIEnv *env, jobject obj) {
     LOGI("trigger downcall! (%s)", __func__);

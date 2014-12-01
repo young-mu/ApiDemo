@@ -1,9 +1,15 @@
 LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
+LOCAL_MODULE := callee
+LOCAL_SRC_FILES := callee.c
+LOCAL_LDFLAGS := -llog
+include $(BUILD_SHARED_LIBRARY)
+
+include $(CLEAR_VARS)
 LOCAL_MODULE := downcall
 LOCAL_SRC_FILES := downcall.c
-LOCAL_LDFLAGS := -llog
+LOCAL_LDFLAGS := -llog -ldl
 include $(BUILD_SHARED_LIBRARY)
 
 include $(CLEAR_VARS)

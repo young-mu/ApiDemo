@@ -1,7 +1,6 @@
 #include "_log.h"
 #include <string.h>
 #include <jni.h>
-#include <android/log.h>
 #include <pthread.h>
 
 #define THREAD_NUM 5
