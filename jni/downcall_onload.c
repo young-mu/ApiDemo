@@ -11,6 +11,27 @@ jstring DowncallOnloadActivity_downcallOnloadMtd1(JNIEnv *env, jobject obj) {
 
 jstring DowncallOnloadActivity_downcallOnloadMtd2(JNIEnv *env, jobject obj) {
     LOGI("trigger downcall! (%s)", __func__);
+
+    void *handle = NULL;
+    void (*callfunc)();
+    const char *err = NULL;
+
+    handle = dlopen("/data/data/com.young.jniinterface/lib/libcallee.so", RTLD_NOW);
+    if (!handle) {
+        LOGI("dlopen failed! (%s)", dlerror());
+        return (*env)->NewStringUTF(env, "Error: dlopen");
+    }
+
+    callfunc = dlsym(handle, "callee");
+    // NOTE: dlerror returns 'Symbol not found' though dlsym returns valid address
+    if (callfunc == NULL) {
+        LOGI("dlsym failed! (%s)", dlerror());
+        return (*env)->NewStringUTF(env, "Error: dlsym");
+    }
+
+    callfunc();
+    dlclose(handle);
+
     return (*env)->NewStringUTF(env, "Here is in downcall onload method 2");
 }
 

@@ -23,10 +23,12 @@ jstring Java_com_young_jniinterface_DowncallActivity_downcallMtd2(JNIEnv *env, j
 
     callfunc = dlsym(handle, "callee");
     // NOTE: dlerror returns 'Symbol not found' though dlsym returns valid address
-    if (callfunc != NULL) {
-        callfunc();
+    if (callfunc == NULL) {
+        LOGI("dlsym failed! (%s)", dlerror());
+        return (*env)->NewStringUTF(env, "Error: dlsym");
     }
 
+    callfunc();
     dlclose(handle);
 
     return (*env)->NewStringUTF(env, "Here is in downcall method 2");
