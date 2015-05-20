@@ -12,6 +12,7 @@ public class DowncallActivity extends Activity implements OnClickListener {
     private TextView downcallTxt;
     private Button methodBtn1;
     private Button methodBtn2;
+    private Button methodBtn3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,12 +23,15 @@ public class DowncallActivity extends Activity implements OnClickListener {
         // get buttons and set listeners
         methodBtn1 = (Button)findViewById(R.id.dc_method_button1);
         methodBtn2 = (Button)findViewById(R.id.dc_method_button2);
+        methodBtn3 = (Button)findViewById(R.id.dc_method_button3);
         methodBtn1.setOnClickListener(this);
         methodBtn2.setOnClickListener(this);
+        methodBtn3.setOnClickListener(this);
     }
 
     public native String downcallMtd1();
     public native String downcallMtd2();
+    public native String downcallMtd3();
 
     static {
         System.loadLibrary("downcall");
@@ -41,6 +45,9 @@ public class DowncallActivity extends Activity implements OnClickListener {
             break;
         case R.id.dc_method_button2:
             downcallTxt.setText(downcallMtd2());
+            break;
+        case R.id.dc_method_button3:
+            downcallTxt.setText(downcallMtd3());
             break;
         default:
             break;

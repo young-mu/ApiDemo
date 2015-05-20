@@ -19,6 +19,12 @@
         android:layout_height="wrap_content"
         android:text="@string/dc_method_button2" />
 
+   <Button
+        android:id="@+id/dc_method_button3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/dc_method_button3" />
+
     <TextView
         android:id="@+id/downcall_text"
         android:layout_width="match_parent"

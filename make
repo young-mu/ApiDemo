@@ -14,7 +14,8 @@ else
     echo "2. build NDK libraries ..."
     if [[ -d ./jni ]]; then
         ndk-build clean 1> /dev/null
-        ndk-build 1> /dev/null
+#        ndk-build APP_ABI=arm64-v8a 1> /dev/null
+        ndk-build APP_ABI=armeabi-v7a 1> /dev/null
     fi
     echo "3. build APK ..."
     ant clean 1> /dev/null

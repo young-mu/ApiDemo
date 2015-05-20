@@ -2,13 +2,55 @@
 #include <string.h>
 #include <jni.h>
 #include <dlfcn.h>
+#include <stdio.h>
+#include <fcntl.h>
 
 jstring Java_com_young_jniinterface_DowncallActivity_downcallMtd1(JNIEnv *env, jobject obj) {
     LOGI("trigger downcall! (%s)", __func__);
     return (*env)->NewStringUTF(env, "Here is in downcall method 1");
 }
 
+int my_read(void *cookie, char *data, int n)
+{
+    return read((int)(long)cookie, data, n);
+}
+
 jstring Java_com_young_jniinterface_DowncallActivity_downcallMtd2(JNIEnv *env, jobject obj) {
+    LOGI("trigger downcall! (%s)", __func__);
+
+    int fd;
+    FILE *fp;
+    int i;
+    char buf[5];
+    int ret;
+
+    fd = open("/data/young/test", O_RDONLY);
+    if (fd == -1) {
+        LOGE("open failed! (no /data/young/test file (content:12345))");
+    }
+
+    fp = funopen((void*)(long)fd, my_read, NULL, NULL, NULL);
+    if (fp == NULL) {
+        LOGE("funopen failed!!");
+        close(fd);
+    }
+
+    ret = fread(buf, sizeof(char), 5, fp);
+    if (ret != 5) {
+        LOGE("fread failed!");
+    }
+
+    for (i = 0; i < 5; i++) {
+        LOGI("(%d): %c", i, buf[i]);
+    }
+
+    close(fd);
+    fclose(fp);
+
+    return (*env)->NewStringUTF(env, "Here is in downcall method 2");
+}
+
+jstring Java_com_young_jniinterface_DowncallActivity_downcallMtd3(JNIEnv *env, jobject obj) {
     LOGI("trigger downcall! (%s)", __func__);
 
     void *handle = NULL;
@@ -31,5 +73,5 @@ jstring Java_com_young_jniinterface_DowncallActivity_downcallMtd2(JNIEnv *env, j
     callfunc();
     dlclose(handle);
 
-    return (*env)->NewStringUTF(env, "Here is in downcall method 2");
+    return (*env)->NewStringUTF(env, "Here is in downcall method 3");
 }
