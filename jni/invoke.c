@@ -32,7 +32,7 @@ void *threadFunc(void *arg) {
     }
 
     // call static method
-    (*env)->CallStaticVoidMethod(env, clazz, invoke, (int)arg);
+    (*env)->CallStaticVoidMethod(env, clazz, invoke, (jobjectArray)arg);
 
 err:
     if ((*gjvm )->DetachCurrentThread(gjvm) != JNI_OK) {
@@ -49,7 +49,7 @@ void Java_com_young_jniinterface_InvokeActivity_globalizeVar(JNIEnv *env, jobjec
 
 void Java_com_young_jniinterface_InvokeActivity_mainThread(JNIEnv *env, jobject obj) {
     LOGI("trigger downcall! (%s)", __func__);
-    int i;
+    long i;
     pthread_t pt[5];
 
     // create child thread
