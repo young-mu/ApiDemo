@@ -77,14 +77,14 @@ jstring Java_com_young_jniinterface_UpcallActivity_downcallMtd2(JNIEnv *env, job
     return (jstring)(*env)->CallObjectMethod(env, jobj, nonstaticUpcall);
 }
 
-// NewObjectV
+// NewObject
 jint Java_com_young_jniinterface_UpcallActivity_downcallMtd3(JNIEnv *env, jobject obj)
 {
     LOGI("trigger downcall! (%s)", __func__);
 
     // get class
     jclass clazz;
-    clazz = (*env)->FindClass(env, (char*)"com/young/jniinterface/UpcallActivity");
+    clazz = (*env)->FindClass(env, (char*)"com/young/jniinterface/testClass");
     if (clazz == NULL) {
         LOGE("FindClass failed!");
         return -1;
@@ -123,7 +123,7 @@ jint Java_com_young_jniinterface_UpcallActivity_downcallMtd4(JNIEnv *env, jobjec
 
     // get class
     jclass clazz;
-    clazz = (*env)->FindClass(env, (char*)"com/young/jniinterface/UpcallActivity");
+    clazz = (*env)->FindClass(env, (char*)"com/young/jniinterface/testClass");
     if (clazz == NULL) {
         LOGE("FindClass failed!");
         return -1;
@@ -165,7 +165,7 @@ jint Java_com_young_jniinterface_UpcallActivity_downcallMtd5(JNIEnv *env, jobjec
 
     // get class
     jclass clazz;
-    clazz = (*env)->FindClass(env, (char*)"com/young/jniinterface/UpcallActivity");
+    clazz = (*env)->FindClass(env, (char*)"com/young/jniinterface/testClass");
     if (clazz == NULL) {
         LOGE("FindClass failed!");
         return -1;

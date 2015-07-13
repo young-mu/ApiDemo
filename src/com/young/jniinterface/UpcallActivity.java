@@ -17,7 +17,6 @@ public class UpcallActivity extends Activity implements OnClickListener {
     private Button methodBtn4;
     private Button methodBtn5;
     public String str = "NULL";
-    public int init;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,10 +39,6 @@ public class UpcallActivity extends Activity implements OnClickListener {
 
     public UpcallActivity() {
         // nothing to do
-    }
-
-    public UpcallActivity(int init) {
-        this.init = init;
     }
 
     // static function with passed parameter
@@ -92,5 +87,12 @@ public class UpcallActivity extends Activity implements OnClickListener {
         default:
             break;
         }
+    }
+}
+
+class testClass {
+    private int init;
+    public testClass(int init) {
+        this.init = init;
     }
 }
