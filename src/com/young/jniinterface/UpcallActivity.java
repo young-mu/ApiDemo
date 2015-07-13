@@ -13,7 +13,11 @@ public class UpcallActivity extends Activity implements OnClickListener {
     private TextView upcallTxt;
     private Button methodBtn1;
     private Button methodBtn2;
+    private Button methodBtn3;
+    private Button methodBtn4;
+    private Button methodBtn5;
     public String str = "NULL";
+    public int init;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,8 +28,22 @@ public class UpcallActivity extends Activity implements OnClickListener {
         // get buttons and set listeners
         methodBtn1 = (Button)findViewById(R.id.uc_method_button1);
         methodBtn2 = (Button)findViewById(R.id.uc_method_button2);
+        methodBtn3 = (Button)findViewById(R.id.uc_method_button3);
+        methodBtn4 = (Button)findViewById(R.id.uc_method_button4);
+        methodBtn5 = (Button)findViewById(R.id.uc_method_button5);
         methodBtn1.setOnClickListener(this);
         methodBtn2.setOnClickListener(this);
+        methodBtn3.setOnClickListener(this);
+        methodBtn4.setOnClickListener(this);
+        methodBtn5.setOnClickListener(this);
+    }
+
+    public UpcallActivity() {
+        // nothing to do
+    }
+
+    public UpcallActivity(int init) {
+        this.init = init;
     }
 
     // static function with passed parameter
@@ -42,8 +60,12 @@ public class UpcallActivity extends Activity implements OnClickListener {
 
     // downcall (call staticUpcall)
     public native String downcallMtd1();
-    // downcall (call nonstaticUpcall)
+    // downcall (call nonstaticUpcall - modify str)
     public native String downcallMtd2();
+    // downcall (call nonstaticUpcall - initiate init, NewObject/NewObjectV/NewObjectA)
+    public native int downcallMtd3();
+    public native int downcallMtd4(int init);
+    public native int downcallMtd5();
 
     static {
         System.loadLibrary("upcall");
@@ -57,6 +79,15 @@ public class UpcallActivity extends Activity implements OnClickListener {
             break;
         case R.id.uc_method_button2:
             upcallTxt.setText(downcallMtd2());
+            break;
+        case R.id.uc_method_button3:
+            upcallTxt.setText("(NewObject) init = " + downcallMtd3());
+            break;
+        case R.id.uc_method_button4:
+            upcallTxt.setText("(NewObjectV) init = " + downcallMtd4(100));
+            break;
+        case R.id.uc_method_button5:
+            upcallTxt.setText("(NewObjectA) init = " + downcallMtd5());
             break;
         default:
             break;

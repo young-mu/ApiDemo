@@ -18,6 +18,9 @@
     <!-- res/layout/activity_upcall.xml -->
     <string name="uc_method_button1">Upcall Method 1</string>
     <string name="uc_method_button2">Upcall Method 2</string>
+    <string name="uc_method_button3">Upcall Method 3 (NewObject)</string>
+    <string name="uc_method_button4">Upcall Method 4 (NewObjectV)</string>
+    <string name="uc_method_button5">Upcall Method 5 (NewObjectA)</string>
     <string name="upcall_text">Default : JNI upcall</string>
     <!-- res/layout/activity_invoke.xml -->
     <string name="iv_method_button">Invoke Method</string>
