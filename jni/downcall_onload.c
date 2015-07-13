@@ -36,6 +36,7 @@ jstring DowncallOnloadActivity_downcallOnloadMtd2(JNIEnv *env, jobject obj) {
     return (*env)->NewStringUTF(env, "Here is in downcall onload method 2");
 }
 
+// const char *name, const char *signature, void *fnPtr
 static JNINativeMethod gMethods[] = {
     {"downcallOnloadMtd1", "()Ljava/lang/String;", (void*)DowncallOnloadActivity_downcallOnloadMtd1},
     {"downcallOnloadMtd2", "()Ljava/lang/String;", (void*)DowncallOnloadActivity_downcallOnloadMtd2},
