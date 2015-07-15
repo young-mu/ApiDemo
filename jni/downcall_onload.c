@@ -5,12 +5,14 @@
 
 #define NELEM(x) ((int)(sizeof(x) / sizeof(x[0])))
 
-jstring DowncallOnloadActivity_downcallOnloadMtd1(JNIEnv *env, jobject obj) {
+jstring DowncallOnloadActivity_downcallOnloadMtd1(JNIEnv *env, jobject obj)
+{
     LOGI("trigger downcall! (%s)", __func__);
     return (*env)->NewStringUTF(env, "Here is in downcall onload method 1");
 }
 
-jstring DowncallOnloadActivity_downcallOnloadMtd2(JNIEnv *env, jobject obj) {
+jstring DowncallOnloadActivity_downcallOnloadMtd2(JNIEnv *env, jobject obj)
+{
     LOGI("trigger downcall! (%s)", __func__);
 
     void *handle = NULL;
@@ -42,7 +44,10 @@ static JNINativeMethod gMethods[] = {
     {"downcallOnloadMtd2", "()Ljava/lang/String;", (void*)DowncallOnloadActivity_downcallOnloadMtd2},
 };
 
-int JNI_OnLoad(JavaVM *vm, void *reserved) {
+// called when System.loadLiabray executes
+int JNI_OnLoad(JavaVM *vm, void *reserved)
+{
+    LOGI("%s...", __func__);
     JNIEnv *env = NULL;
     if ((*vm)->GetEnv(vm, (void**)&env, JNI_VERSION_1_4) != JNI_OK) {
         LOGE("GetEnv failed!");
@@ -63,4 +68,28 @@ int JNI_OnLoad(JavaVM *vm, void *reserved) {
     }
 
     return JNI_VERSION_1_4;
+}
+
+// called when the classloader is garbage collected
+void JNI_OnUnload(JavaVM *vm, void *reserved)
+{
+    LOGI("%s...", __func__);
+    JNIEnv *env = NULL;
+    if ((*vm)->GetEnv(vm, (void**)&env, JNI_VERSION_1_4) != JNI_OK) {
+        LOGE("GetEnv failed!");
+        return;
+    }
+
+    jclass clazz;
+    clazz = (*env)->FindClass(env, "com/young/jniinterface/DowncallOnloadActivity");
+    if (clazz == NULL) {
+        LOGE("FindClass failed!");
+        return;
+    }
+
+    LOGI("call UnregisterNatives");
+    if ((*env)->UnregisterNatives(env, clazz) < 0) {
+        LOGE("UnregisterNatives failed!");
+        return;
+    }
 }
