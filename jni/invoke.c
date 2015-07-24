@@ -16,6 +16,8 @@ void *threadFunc(void *arg) {
         pthread_exit(0);
     }
 
+    LOGI("I'm thread [%d]", gettid());
+
     // get class
     jclass clazz;
     clazz = (*env)->GetObjectClass(env, gobj);
