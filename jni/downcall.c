@@ -5,9 +5,15 @@
 #include <stdio.h>
 #include <fcntl.h>
 
-jstring Java_com_young_jniinterface_DowncallActivity_downcallMtd1(JNIEnv *env, jobject obj) {
+jstring Java_com_young_jniinterface_DowncallActivity_downcallMtd1(JNIEnv *env, jobject obj, jint i1, jlong i2, jfloat i3) {
     LOGI("trigger downcall! (%s)", __func__);
     return (*env)->NewStringUTF(env, "Here is in downcall method 1");
+}
+
+jboolean Java_com_young_jniinterface_DowncallActivity_downcallMtd2(JNIEnv *env, jobject obj, jint i1, jlong i2, jfloat i3) {
+    LOGI("trigger downcall! (%s)", __func__);
+    LOGI("i1 = %d, i2 = %llx, i3 = %f\n", i1, i2, i3);
+    return ((i1 == -1) && (i2 == (jlong)0x1234567890abcdef) && (i3 == (jfloat)3.14f));
 }
 
 int my_read(void *cookie, char *data, int n)
@@ -15,7 +21,7 @@ int my_read(void *cookie, char *data, int n)
     return read((int)(long)cookie, data, n);
 }
 
-jstring Java_com_young_jniinterface_DowncallActivity_downcallMtd2(JNIEnv *env, jobject obj) {
+jstring Java_com_young_jniinterface_DowncallActivity_downcallMtd3(JNIEnv *env, jobject obj) {
     LOGI("trigger downcall! (%s)", __func__);
 
     int fd;
@@ -50,7 +56,7 @@ jstring Java_com_young_jniinterface_DowncallActivity_downcallMtd2(JNIEnv *env, j
     return (*env)->NewStringUTF(env, "Here is in downcall method 2");
 }
 
-jstring Java_com_young_jniinterface_DowncallActivity_downcallMtd3(JNIEnv *env, jobject obj) {
+jstring Java_com_young_jniinterface_DowncallActivity_downcallMtd4(JNIEnv *env, jobject obj) {
     LOGI("trigger downcall! (%s)", __func__);
 
     void *handle = NULL;
@@ -73,5 +79,5 @@ jstring Java_com_young_jniinterface_DowncallActivity_downcallMtd3(JNIEnv *env, j
     callfunc();
     dlclose(handle);
 
-    return (*env)->NewStringUTF(env, "Here is in downcall method 3");
+    return (*env)->NewStringUTF(env, "Here is in downcall method 4");
 }

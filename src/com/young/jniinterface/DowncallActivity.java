@@ -13,6 +13,7 @@ public class DowncallActivity extends Activity implements OnClickListener {
     private Button methodBtn1;
     private Button methodBtn2;
     private Button methodBtn3;
+    private Button methodBtn4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,14 +25,17 @@ public class DowncallActivity extends Activity implements OnClickListener {
         methodBtn1 = (Button)findViewById(R.id.dc_method_button1);
         methodBtn2 = (Button)findViewById(R.id.dc_method_button2);
         methodBtn3 = (Button)findViewById(R.id.dc_method_button3);
+        methodBtn4 = (Button)findViewById(R.id.dc_method_button4);
         methodBtn1.setOnClickListener(this);
         methodBtn2.setOnClickListener(this);
         methodBtn3.setOnClickListener(this);
+        methodBtn4.setOnClickListener(this);
     }
 
     public native String downcallMtd1();
-    public native String downcallMtd2();
+    public native boolean downcallMtd2(int i1, long i2, float i3);
     public native String downcallMtd3();
+    public native String downcallMtd4();
 
     static {
         System.loadLibrary("downcall");
@@ -44,10 +48,14 @@ public class DowncallActivity extends Activity implements OnClickListener {
             downcallTxt.setText(downcallMtd1());
             break;
         case R.id.dc_method_button2:
-            downcallTxt.setText(downcallMtd2());
+            String ret = String.valueOf(downcallMtd2(-1, 0x1234567890abcdefL, 3.14F));
+            downcallTxt.setText(ret);
             break;
         case R.id.dc_method_button3:
             downcallTxt.setText(downcallMtd3());
+            break;
+        case R.id.dc_method_button4:
+            downcallTxt.setText(downcallMtd4());
             break;
         default:
             break;
