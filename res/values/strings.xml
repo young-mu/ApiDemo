@@ -11,6 +11,7 @@
     <string name="dc_method_button2">Downcall Method 2 (params)</string>
     <string name="dc_method_button3">Downcall Method 3 (callback)</string>
     <string name="dc_method_button4">Downcall Method 4 (dlopen)</string>
+    <string name="dc_method_button5">Downcall Method 5 (perf Java)</string>
     <string name="downcall_text">Default : JNI downcall</string>
     <!-- res/layout/activity_downcall_onload.xml -->
     <string name="dco_method_button1">Downcall (onload) Method 1</string>
@@ -22,7 +23,7 @@
     <string name="uc_method_button3">Upcall Method 3 (NewObject)</string>
     <string name="uc_method_button4">Upcall Method 4 (NewObjectV)</string>
     <string name="uc_method_button5">Upcall Method 5 (NewObjectA)</string>
-    <string name="uc_method_button6">Upcall Method 6 (perf)</string>
+    <string name="uc_method_button6">Upcall Method 6 (perf C)</string>
     <string name="upcall_text">Default : JNI upcall</string>
     <!-- res/layout/activity_invoke.xml -->
     <string name="iv_method_button">Invoke Method</string>

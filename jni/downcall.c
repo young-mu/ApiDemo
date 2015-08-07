@@ -81,3 +81,7 @@ jstring Java_com_young_jniinterface_DowncallActivity_downcallMtd4(JNIEnv *env, j
 
     return (*env)->NewStringUTF(env, "Here is in downcall method 4");
 }
+
+jboolean Java_com_young_jniinterface_DowncallActivity_downcallMtd5(JNIEnv *env, jobject obj, jint i1, jint i2) {
+    return (i1 == 100 && i2 == 200);
+}
