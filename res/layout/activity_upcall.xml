@@ -37,6 +37,12 @@
         android:layout_height="wrap_content"
         android:text="@string/uc_method_button5" />
 
+    <Button
+        android:id="@+id/uc_method_button6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/uc_method_button6" />
+
     <TextView
         android:id="@+id/upcall_text"
         android:layout_width="match_parent"

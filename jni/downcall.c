@@ -53,7 +53,7 @@ jstring Java_com_young_jniinterface_DowncallActivity_downcallMtd3(JNIEnv *env, j
     close(fd);
     fclose(fp);
 
-    return (*env)->NewStringUTF(env, "Here is in downcall method 2");
+    return (*env)->NewStringUTF(env, "Here is in downcall method 3");
 }
 
 jstring Java_com_young_jniinterface_DowncallActivity_downcallMtd4(JNIEnv *env, jobject obj) {

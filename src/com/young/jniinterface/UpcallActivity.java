@@ -16,6 +16,7 @@ public class UpcallActivity extends Activity implements OnClickListener {
     private Button methodBtn3;
     private Button methodBtn4;
     private Button methodBtn5;
+    private Button methodBtn6;
     public String str = "NULL";
 
     @Override
@@ -30,11 +31,13 @@ public class UpcallActivity extends Activity implements OnClickListener {
         methodBtn3 = (Button)findViewById(R.id.uc_method_button3);
         methodBtn4 = (Button)findViewById(R.id.uc_method_button4);
         methodBtn5 = (Button)findViewById(R.id.uc_method_button5);
+        methodBtn6 = (Button)findViewById(R.id.uc_method_button6);
         methodBtn1.setOnClickListener(this);
         methodBtn2.setOnClickListener(this);
         methodBtn3.setOnClickListener(this);
         methodBtn4.setOnClickListener(this);
         methodBtn5.setOnClickListener(this);
+        methodBtn6.setOnClickListener(this);
     }
 
     public UpcallActivity() {
@@ -61,6 +64,7 @@ public class UpcallActivity extends Activity implements OnClickListener {
     public native int downcallMtd3();
     public native int downcallMtd4(int init);
     public native int downcallMtd5();
+    public native float downcallMtd6();
 
     static {
         System.loadLibrary("upcall");
@@ -83,6 +87,9 @@ public class UpcallActivity extends Activity implements OnClickListener {
             break;
         case R.id.uc_method_button5:
             upcallTxt.setText("(NewObjectA) init = " + downcallMtd5());
+            break;
+        case R.id.uc_method_button6:
+            upcallTxt.setText("exectime = " + downcallMtd6() + "s");
             break;
         default:
             break;

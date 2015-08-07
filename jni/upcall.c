@@ -1,6 +1,7 @@
 #include "_log.h"
 #include <string.h>
 #include <jni.h>
+#include <sys/time.h>
 
 jstring Java_com_young_jniinterface_UpcallActivity_downcallMtd1(JNIEnv *env, jobject obj) {
     LOGI("trigger downcall! (%s)", __func__);
@@ -197,4 +198,25 @@ jint Java_com_young_jniinterface_UpcallActivity_downcallMtd5(JNIEnv *env, jobjec
     jint initVal = (*env)->GetIntField(env, jobj, init);
 
     return initVal;
+}
+
+jfloat Java_com_young_jniinterface_UpcallActivity_downcallMtd6(JNIEnv *env, jobject obj)
+{
+    LOGI("trigger downcall! (%s)", __func__);
+
+    int i;
+    struct timeval tv_start, tv_end;
+    gettimeofday(&tv_start, NULL);
+
+    for (i = 0; i < 2000000; i++) {
+        jint version = (*env)->GetVersion(env);
+    }
+
+    gettimeofday(&tv_end, NULL);
+    float exectime = (tv_end.tv_sec - tv_start.tv_sec) +
+                     (float)(tv_end.tv_usec - tv_start.tv_usec) / 1000000;
+
+    LOGI("exectime = %fs (%fms)", exectime, exectime * 1000);
+
+    return exectime;
 }
