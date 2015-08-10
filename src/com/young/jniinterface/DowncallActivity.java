@@ -18,11 +18,13 @@ public class DowncallActivity extends Activity implements OnClickListener {
     private Button methodBtn4;
     private Button methodBtn5;
     private Button methodBtn6;
+    private Context mContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_downcall);
+        mContext = DowncallActivity.this;
         // get textview
         downcallTxt = (TextView)findViewById(R.id.downcall_text);
         // get buttons and set listeners
@@ -36,7 +38,6 @@ public class DowncallActivity extends Activity implements OnClickListener {
         methodBtn2.setOnClickListener(this);
         methodBtn3.setOnClickListener(this);
         methodBtn4.setOnClickListener(this);
-        methodBtn5.setOnClickListener(this);
         methodBtn5.setOnClickListener(this);
         methodBtn6.setOnClickListener(this);
     }
@@ -59,7 +60,7 @@ public class DowncallActivity extends Activity implements OnClickListener {
         }
         protected void onDraw(Canvas canvas) {
             super.onDraw(canvas);
-            downcallMtd6();
+            downcallMtd6(canvas);
         }
     }
 
@@ -101,7 +102,7 @@ public class DowncallActivity extends Activity implements OnClickListener {
             }
             break;
         case R.id.dc_method_button6:
-            TestView testview = new TestView(this);
+            TestView testview = new TestView(mContext);
             setContentView(testview);
             break;
         default:
