@@ -12,6 +12,7 @@
     <string name="dc_method_button3">Downcall Method 3 (callback)</string>
     <string name="dc_method_button4">Downcall Method 4 (dlopen)</string>
     <string name="dc_method_button5">Downcall Method 5 (perf Java)</string>
+    <string name="dc_method_button6">Downcall Method 6 (skiatest)</string>
     <string name="downcall_text">Default : JNI downcall</string>
     <!-- res/layout/activity_downcall_onload.xml -->
     <string name="dco_method_button1">Downcall (onload) Method 1</string>
