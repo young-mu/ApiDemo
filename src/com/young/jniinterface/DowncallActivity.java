@@ -15,6 +15,7 @@ public class DowncallActivity extends Activity implements OnClickListener {
     private Button methodBtn3;
     private Button methodBtn4;
     private Button methodBtn5;
+    private Button methodBtn6;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,18 +27,21 @@ public class DowncallActivity extends Activity implements OnClickListener {
         methodBtn3 = (Button)findViewById(R.id.dc_method_button3);
         methodBtn4 = (Button)findViewById(R.id.dc_method_button4);
         methodBtn5 = (Button)findViewById(R.id.dc_method_button5);
+        methodBtn6 = (Button)findViewById(R.id.dc_method_button6);
         methodBtn1.setOnClickListener(this);
         methodBtn2.setOnClickListener(this);
         methodBtn3.setOnClickListener(this);
         methodBtn4.setOnClickListener(this);
         methodBtn5.setOnClickListener(this);
+        methodBtn6.setOnClickListener(this);
     }
 
     public native String downcallMtd1();
     public native boolean downcallMtd2(int i1, long i2, float i3);
     public native String downcallMtd3();
     public native String downcallMtd4();
-    public native boolean downcallMtd5(int i1, int i2);
+    public native String downcallMtd5();
+    public native boolean downcallMtd6(int i1, int i2);
 
     static {
         System.loadLibrary("downcall");
@@ -60,13 +64,16 @@ public class DowncallActivity extends Activity implements OnClickListener {
             downcallTxt.setText(downcallMtd4());
             break;
         case R.id.dc_method_button5:
+            downcallTxt.setText(downcallMtd5());
+            break;
+        case R.id.dc_method_button6:
             long startTime, endTime;
             float time;
             int cnt = 0;
             final int COUNT = 1000000;
             startTime = System.currentTimeMillis();
             for (int i = 0; i < COUNT; i++) {
-                if ((downcallMtd5(100, 200)) == true) {
+                if ((downcallMtd6(100, 200)) == true) {
                     cnt++;
                 } else {
                     break;

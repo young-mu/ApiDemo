@@ -7,7 +7,8 @@
 
 jstring Java_com_young_jniinterface_DowncallActivity_downcallMtd1(JNIEnv *env, jobject obj, jint i1, jlong i2, jfloat i3) {
     LOGI("trigger downcall! (%s)", __func__);
-    LOGI("env = %p", env);
+    LOGI("(*env)->GetVersion = %p", (*env)->GetVersion);
+    LOGI("(*env)->DefineClass = %p", (*env)->DefineClass);
     return (*env)->NewStringUTF(env, "Here is in downcall method 1");
 }
 
@@ -57,7 +58,32 @@ jstring Java_com_young_jniinterface_DowncallActivity_downcallMtd3(JNIEnv *env, j
     return (*env)->NewStringUTF(env, "Here is in downcall method 3");
 }
 
+int (*p_read)(void *, char *, int);
+
+int my_read2(void *cookie, char *data, int n)
+{
+    return p_read(cookie, data, n);
+}
+
 jstring Java_com_young_jniinterface_DowncallActivity_downcallMtd4(JNIEnv *env, jobject obj) {
+    LOGI("trigger downcall! (%s)", __func__);
+
+    FILE *fp = fopen("/data/young/test", "r");
+
+    // change callback
+    p_read = fp->_read;
+    fp->_read = my_read2;
+
+    char buf[20];
+
+    while (fgets(buf, 10, fp) != NULL) {
+        LOGI("buf: %s", buf);
+    }
+
+    return (*env)->NewStringUTF(env, "Here is in downcall method 4");
+}
+
+jstring Java_com_young_jniinterface_DowncallActivity_downcallMtd5(JNIEnv *env, jobject obj) {
     LOGI("trigger downcall! (%s)", __func__);
 
     void *handle = NULL;
@@ -80,9 +106,9 @@ jstring Java_com_young_jniinterface_DowncallActivity_downcallMtd4(JNIEnv *env, j
     callfunc();
     dlclose(handle);
 
-    return (*env)->NewStringUTF(env, "Here is in downcall method 4");
+    return (*env)->NewStringUTF(env, "Here is in downcall method 5");
 }
 
-jboolean Java_com_young_jniinterface_DowncallActivity_downcallMtd5(JNIEnv *env, jobject obj, jint i1, jint i2) {
+jboolean Java_com_young_jniinterface_DowncallActivity_downcallMtd6(JNIEnv *env, jobject obj, jint i1, jint i2) {
     return (i1 == 100 && i2 == 200);
 }
