@@ -2,13 +2,11 @@ package com.young.jniinterface;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.content.Context;
 import android.util.Log;
 import android.widget.TextView;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.graphics.Canvas;
 
 public class DowncallActivity extends Activity implements OnClickListener {
     private TextView downcallTxt;
@@ -17,29 +15,22 @@ public class DowncallActivity extends Activity implements OnClickListener {
     private Button methodBtn3;
     private Button methodBtn4;
     private Button methodBtn5;
-    private Button methodBtn6;
-    private Context mContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_downcall);
-        mContext = DowncallActivity.this;
-        // get textview
         downcallTxt = (TextView)findViewById(R.id.downcall_text);
-        // get buttons and set listeners
         methodBtn1 = (Button)findViewById(R.id.dc_method_button1);
         methodBtn2 = (Button)findViewById(R.id.dc_method_button2);
         methodBtn3 = (Button)findViewById(R.id.dc_method_button3);
         methodBtn4 = (Button)findViewById(R.id.dc_method_button4);
         methodBtn5 = (Button)findViewById(R.id.dc_method_button5);
-        methodBtn6 = (Button)findViewById(R.id.dc_method_button6);
         methodBtn1.setOnClickListener(this);
         methodBtn2.setOnClickListener(this);
         methodBtn3.setOnClickListener(this);
         methodBtn4.setOnClickListener(this);
         methodBtn5.setOnClickListener(this);
-        methodBtn6.setOnClickListener(this);
     }
 
     public native String downcallMtd1();
@@ -47,21 +38,9 @@ public class DowncallActivity extends Activity implements OnClickListener {
     public native String downcallMtd3();
     public native String downcallMtd4();
     public native boolean downcallMtd5(int i1, int i2);
-    public native void downcallMtd6(Canvas canvas);
 
     static {
         System.loadLibrary("downcall");
-        System.loadLibrary("downcall_skia");
-    }
-
-    class TestView extends View {
-        public TestView(Context context) {
-            super(context);
-        }
-        protected void onDraw(Canvas canvas) {
-            super.onDraw(canvas);
-            downcallMtd6(canvas);
-        }
     }
 
     @Override
@@ -100,10 +79,6 @@ public class DowncallActivity extends Activity implements OnClickListener {
             } else {
                 downcallTxt.setText("error");
             }
-            break;
-        case R.id.dc_method_button6:
-            TestView testview = new TestView(mContext);
-            setContentView(testview);
             break;
         default:
             break;

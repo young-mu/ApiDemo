@@ -7,6 +7,7 @@
 
 jstring Java_com_young_jniinterface_DowncallActivity_downcallMtd1(JNIEnv *env, jobject obj, jint i1, jlong i2, jfloat i3) {
     LOGI("trigger downcall! (%s)", __func__);
+    LOGI("env = %p", env);
     return (*env)->NewStringUTF(env, "Here is in downcall method 1");
 }
 

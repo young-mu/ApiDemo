@@ -15,16 +15,6 @@ LOCAL_LDLIBS := -llog -ldl
 include $(BUILD_SHARED_LIBRARY)
 
 include $(CLEAR_VARS)
-LOCAL_MODULE := downcall_skia
-LOCAL_SRC_FILES := downcall_skia.cpp
-LOCAL_C_INCLUDES := /home/young/AOSP/Lollipop/frameworks/base/core/jni/android/graphics \
-					/home/young/AOSP/Lollipop/external/skia/include/core \
-					/home/young/AOSP/Lollipop/system/core/include
-LOCAL_CFLAGS := -g -O0
-LOCAL_LDLIBS := -llog -L /home/young/Debug/n9/symbols/system/lib -lskia -landroid_runtime -ljnigraphics
-include $(BUILD_SHARED_LIBRARY)
-
-include $(CLEAR_VARS)
 LOCAL_MODULE := downcall_onload
 LOCAL_SRC_FILES := downcall_onload.c
 LOCAL_CFLAGS := -g -O0
