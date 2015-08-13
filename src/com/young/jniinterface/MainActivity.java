@@ -14,6 +14,7 @@ public class MainActivity extends Activity implements OnClickListener {
     private Button downcallOnloadBtn;
     private Button upcallBtn;
     private Button invokeBtn;
+    private Button signalBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,10 +26,12 @@ public class MainActivity extends Activity implements OnClickListener {
         downcallOnloadBtn = (Button)findViewById(R.id.downcall_onload_button);
         upcallBtn = (Button)findViewById(R.id.upcall_button);
         invokeBtn = (Button)findViewById(R.id.invoke_button);
+        signalBtn = (Button)findViewById(R.id.signal_button);
         downcallBtn.setOnClickListener(this);
         downcallOnloadBtn.setOnClickListener(this);
         upcallBtn.setOnClickListener(this);
         invokeBtn.setOnClickListener(this);
+        signalBtn.setOnClickListener(this);
     }
 
     @Override
@@ -53,6 +56,11 @@ public class MainActivity extends Activity implements OnClickListener {
             Log.i(TAG, "enter InvokeActivity");
             Intent iIntent = new Intent(MainActivity.this, InvokeActivity.class);
             startActivity(iIntent);
+            break;
+        case R.id.signal_button:
+            Log.i(TAG, "enter SignalActivity");
+            Intent sigIntent = new Intent(MainActivity.this, SignalActivity.class);
+            startActivity(sigIntent);
             break;
         default:
             break;

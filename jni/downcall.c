@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include <fcntl.h>
 
-jstring Java_com_young_jniinterface_DowncallActivity_downcallMtd1(JNIEnv *env, jobject obj, jint i1, jlong i2, jfloat i3) {
+jstring Java_com_young_jniinterface_DowncallActivity_downcallMtd1(JNIEnv *env, jobject obj) {
     LOGI("trigger downcall! (%s)", __func__);
 
     int numUpcall = (int)(sizeof(**env) / sizeof(long));

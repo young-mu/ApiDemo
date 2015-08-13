@@ -45,6 +45,11 @@
             android:name=".InvokeActivity"
             android:label="@string/invoke_button" >
         </activity>
+
+        <activity
+            android:name=".SignalActivity"
+            android:label="@string/signal_button" >
+        </activity>
     </application>
 
 </manifest>

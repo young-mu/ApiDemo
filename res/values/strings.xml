@@ -6,6 +6,7 @@
     <string name="downcall_onload_button">JNI downcall (JNIOnload)</string>
     <string name="upcall_button">JNI upcall</string>
     <string name="invoke_button">JNI invoke</string>
+    <string name="signal_button">Signal Test</string>
     <!-- res/layout/activity_downcall.xml -->
     <string name="dc_method_button1">Downcall 1 (simple downcall)</string>
     <string name="dc_method_button2">Downcall 2 (paramters test)</string>
@@ -29,4 +30,6 @@
     <string name="upcall_text">Default : JNI upcall</string>
     <!-- res/layout/activity_invoke.xml -->
     <string name="iv_method_button">Invoke Method</string>
+    <!-- res/layout/activity_signal.xml -->
+    <string name="sig_method_button">Signal Test</string>
 </resources>

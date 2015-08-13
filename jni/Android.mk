@@ -33,3 +33,9 @@ LOCAL_MODULE := invoke
 LOCAL_SRC_FILES := invoke.c
 LOCAL_LDLIBS := -llog
 include $(BUILD_SHARED_LIBRARY)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE := signal
+LOCAL_SRC_FILES := signal.c
+LOCAL_LDLIBS := -llog
+include $(BUILD_SHARED_LIBRARY)

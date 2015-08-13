@@ -32,4 +32,10 @@
         android:layout_height="wrap_content"
         android:text="@string/invoke_button" />
 
+    <Button
+        android:id="@+id/signal_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/signal_button" />
+
 </LinearLayout>
