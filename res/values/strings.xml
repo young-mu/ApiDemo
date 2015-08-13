@@ -19,12 +19,13 @@
     <string name="dco_method_button2">JNIOnload downcall 2 (explicit dlopen)</string>
     <string name="downcall_onload_text">Default : JNIOnload downcall</string>
     <!-- res/layout/activity_upcall.xml -->
-    <string name="uc_method_button1">Upcall Method 1 (static)</string>
-    <string name="uc_method_button2">Upcall Method 2 (non-static)</string>
-    <string name="uc_method_button3">Upcall Method 3 (NewObject)</string>
-    <string name="uc_method_button4">Upcall Method 4 (NewObjectV)</string>
-    <string name="uc_method_button5">Upcall Method 5 (NewObjectA)</string>
-    <string name="uc_method_button6">Upcall Method 6 (performance in C level)</string>
+    <string name="uc_method_button1">Upcall Method 1 (simple upcall)</string>
+    <string name="uc_method_button2">Upcall Method 2 (static)</string>
+    <string name="uc_method_button3">Upcall Method 3 (non-static)</string>
+    <string name="uc_method_button4">Upcall Method 4 (NewObject)</string>
+    <string name="uc_method_button5">Upcall Method 5 (NewObjectV)</string>
+    <string name="uc_method_button6">Upcall Method 6 (NewObjectA)</string>
+    <string name="uc_method_button7">Upcall Method 7 (performance in C level)</string>
     <string name="upcall_text">Default : JNI upcall</string>
     <!-- res/layout/activity_invoke.xml -->
     <string name="iv_method_button">Invoke Method</string>
