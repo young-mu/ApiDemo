@@ -17,6 +17,7 @@ public class UpcallActivity extends Activity implements OnClickListener {
     private Button methodBtn4;
     private Button methodBtn5;
     private Button methodBtn6;
+    private Button methodBtn7;
     public String str = "NULL";
 
     @Override
@@ -32,12 +33,14 @@ public class UpcallActivity extends Activity implements OnClickListener {
         methodBtn4 = (Button)findViewById(R.id.uc_method_button4);
         methodBtn5 = (Button)findViewById(R.id.uc_method_button5);
         methodBtn6 = (Button)findViewById(R.id.uc_method_button6);
+        methodBtn7 = (Button)findViewById(R.id.uc_method_button7);
         methodBtn1.setOnClickListener(this);
         methodBtn2.setOnClickListener(this);
         methodBtn3.setOnClickListener(this);
         methodBtn4.setOnClickListener(this);
         methodBtn5.setOnClickListener(this);
         methodBtn6.setOnClickListener(this);
+        methodBtn7.setOnClickListener(this);
     }
 
     public UpcallActivity() {
@@ -56,15 +59,13 @@ public class UpcallActivity extends Activity implements OnClickListener {
         return "non-static upcall. (attribute 'str' = " + str + ")";
     }
 
-    // downcall (call staticUpcall)
-    public native String downcallMtd1();
-    // downcall (call nonstaticUpcall - modify str)
+    public native int downcallMtd1();
     public native String downcallMtd2();
-    // downcall (call nonstaticUpcall - initiate init, NewObject/NewObjectV/NewObjectA)
-    public native int downcallMtd3();
-    public native int downcallMtd4(int init);
-    public native int downcallMtd5();
-    public native float downcallMtd6();
+    public native String downcallMtd3();
+    public native int downcallMtd4();
+    public native int downcallMtd5(int init);
+    public native int downcallMtd6();
+    public native float downcallMtd7();
 
     static {
         System.loadLibrary("upcall");
@@ -74,22 +75,26 @@ public class UpcallActivity extends Activity implements OnClickListener {
     public void onClick(View view) {
         switch (view.getId()) {
         case R.id.uc_method_button1:
-            upcallTxt.setText(downcallMtd1());
+            String version = Integer.toHexString(downcallMtd1());
+            upcallTxt.setText("JNI version: " + version);
             break;
         case R.id.uc_method_button2:
             upcallTxt.setText(downcallMtd2());
             break;
         case R.id.uc_method_button3:
-            upcallTxt.setText("(NewObject) init = " + downcallMtd3());
+            upcallTxt.setText(downcallMtd3());
             break;
         case R.id.uc_method_button4:
-            upcallTxt.setText("(NewObjectV) init = " + downcallMtd4(100));
+            upcallTxt.setText("(NewObject) init = " + downcallMtd4());
             break;
         case R.id.uc_method_button5:
-            upcallTxt.setText("(NewObjectA) init = " + downcallMtd5());
+            upcallTxt.setText("(NewObjectV) init = " + downcallMtd5(100));
             break;
         case R.id.uc_method_button6:
-            upcallTxt.setText("exectime = " + downcallMtd6() + "s");
+            upcallTxt.setText("(NewObjectA) init = " + downcallMtd6());
+            break;
+        case R.id.uc_method_button7:
+            upcallTxt.setText("exectime = " + downcallMtd7() + "s");
             break;
         default:
             break;

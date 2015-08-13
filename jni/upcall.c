@@ -3,7 +3,12 @@
 #include <jni.h>
 #include <sys/time.h>
 
-jstring Java_com_young_jniinterface_UpcallActivity_downcallMtd1(JNIEnv *env, jobject obj) {
+jint Java_com_young_jniinterface_UpcallActivity_downcallMtd1(JNIEnv *env, jobject obj) {
+    jint version = (*env)->GetVersion(env);
+    return version;
+}
+
+jstring Java_com_young_jniinterface_UpcallActivity_downcallMtd2(JNIEnv *env, jobject obj) {
     LOGI("trigger downcall! (%s)", __func__);
 
     // get class
@@ -28,7 +33,7 @@ jstring Java_com_young_jniinterface_UpcallActivity_downcallMtd1(JNIEnv *env, job
     return (jstring)(*env)->CallStaticObjectMethod(env, clazz, staticUpcall, jparam);
 }
 
-jstring Java_com_young_jniinterface_UpcallActivity_downcallMtd2(JNIEnv *env, jobject obj) {
+jstring Java_com_young_jniinterface_UpcallActivity_downcallMtd3(JNIEnv *env, jobject obj) {
     LOGI("trigger downcall! (%s)", __func__);
 
     // get class
@@ -79,7 +84,7 @@ jstring Java_com_young_jniinterface_UpcallActivity_downcallMtd2(JNIEnv *env, job
 }
 
 // NewObject
-jint Java_com_young_jniinterface_UpcallActivity_downcallMtd3(JNIEnv *env, jobject obj)
+jint Java_com_young_jniinterface_UpcallActivity_downcallMtd4(JNIEnv *env, jobject obj)
 {
     LOGI("trigger downcall! (%s)", __func__);
 
@@ -118,7 +123,7 @@ jint Java_com_young_jniinterface_UpcallActivity_downcallMtd3(JNIEnv *env, jobjec
 }
 
 // NewObjectV
-jint Java_com_young_jniinterface_UpcallActivity_downcallMtd4(JNIEnv *env, jobject obj, ...)
+jint Java_com_young_jniinterface_UpcallActivity_downcallMtd5(JNIEnv *env, jobject obj, ...)
 {
     LOGI("trigger downcall! (%s)", __func__);
 
@@ -160,7 +165,7 @@ jint Java_com_young_jniinterface_UpcallActivity_downcallMtd4(JNIEnv *env, jobjec
 }
 
 // NewObjectA
-jint Java_com_young_jniinterface_UpcallActivity_downcallMtd5(JNIEnv *env, jobject obj)
+jint Java_com_young_jniinterface_UpcallActivity_downcallMtd6(JNIEnv *env, jobject obj)
 {
     LOGI("trigger downcall! (%s)", __func__);
 
@@ -200,7 +205,7 @@ jint Java_com_young_jniinterface_UpcallActivity_downcallMtd5(JNIEnv *env, jobjec
     return initVal;
 }
 
-jfloat Java_com_young_jniinterface_UpcallActivity_downcallMtd6(JNIEnv *env, jobject obj)
+jfloat Java_com_young_jniinterface_UpcallActivity_downcallMtd7(JNIEnv *env, jobject obj)
 {
     LOGI("trigger downcall! (%s)", __func__);
 

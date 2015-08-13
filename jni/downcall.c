@@ -7,8 +7,15 @@
 
 jstring Java_com_young_jniinterface_DowncallActivity_downcallMtd1(JNIEnv *env, jobject obj, jint i1, jlong i2, jfloat i3) {
     LOGI("trigger downcall! (%s)", __func__);
-    LOGI("(*env)->GetVersion = %p", (*env)->GetVersion);
-    LOGI("(*env)->DefineClass = %p", (*env)->DefineClass);
+
+    int numUpcall = (int)(sizeof(**env) / sizeof(long));
+    LOGI("number of upcalls = %d", numUpcall);
+
+    LOGI("[stack] addr of &env = %p", &env);
+    LOGI("[heap] addr of env = %p", env);
+    LOGI("[libart.so rodata] addr of (*env) = %p", (*env));
+    LOGI("[libart.so code] addr of (*env)->GetVersion = %p", (*env)->GetVersion);
+
     return (*env)->NewStringUTF(env, "Here is in downcall method 1");
 }
 
@@ -101,6 +108,12 @@ jstring Java_com_young_jniinterface_DowncallActivity_downcallMtd5(JNIEnv *env, j
     if (callfunc == NULL) {
         LOGI("dlsym failed! (%s)", dlerror());
         return (*env)->NewStringUTF(env, "Error: dlsym");
+    }
+
+    Dl_info dlinfo;
+    int found = dladdr((void*)callfunc, &dlinfo);
+    if (found) {
+        LOGI("symbol [name] = %s, [address] = %p, [library] = %s, [library baseaddr] = %p\n", dlinfo.dli_sname, dlinfo.dli_saddr, dlinfo.dli_fname, dlinfo.dli_fbase);
     }
 
     callfunc();
