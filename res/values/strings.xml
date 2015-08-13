@@ -3,29 +3,28 @@
     <string name="app_name">JNIitf</string>
     <!-- res/layout/activity_main.xml -->
     <string name="downcall_button">JNI downcall</string>
-    <string name="downcall_onload_button">JNI downcall (onload)</string>
+    <string name="downcall_onload_button">JNI downcall (JNIOnload)</string>
     <string name="upcall_button">JNI upcall</string>
     <string name="invoke_button">JNI invoke</string>
     <!-- res/layout/activity_downcall.xml -->
-    <string name="dc_method_button1">Downcall Method 1</string>
-    <string name="dc_method_button2">Downcall Method 2 (params)</string>
-    <string name="dc_method_button3">Downcall Method 3 (funopen callback)</string>
-    <string name="dc_method_button4">Downcall Method 4 (fgets callback)</string>
-    <string name="dc_method_button5">Downcall Method 5 (dlopen)</string>
-    <string name="dc_method_button6">Downcall Method 6 (perf Java)</string>
+    <string name="dc_method_button1">Downcall 1 (simple downcall)</string>
+    <string name="dc_method_button2">Downcall 2 (paramters test)</string>
+    <string name="dc_method_button3">Downcall 3 (funopen callback)</string>
+    <string name="dc_method_button4">Downcall 4 (fgets callback)</string>
+    <string name="dc_method_button5">Downcall 5 (explicit dlopen)</string>
+    <string name="dc_method_button6">Downcall 6 (performance test in Java level)</string>
     <string name="downcall_text">Default : JNI downcall</string>
     <!-- res/layout/activity_downcall_onload.xml -->
-    <string name="dco_method_button1">Downcall (onload) Method 1</string>
-    <string name="dco_method_button2">Downcall (onload) Method 2</string> 
-    <string name="downcall_onload_text">Default : JNI downcall (onload)</string>
+    <string name="dco_method_button1">JNIOnload downcall 1 (simple downcall)</string>
+    <string name="dco_method_button2">JNIOnload downcall 2 (explicit dlopen)</string>
+    <string name="downcall_onload_text">Default : JNIOnload downcall</string>
     <!-- res/layout/activity_upcall.xml -->
-    <string name="uc_method_button1">Upcall Method 1</string>
-    <string name="uc_method_button2">Upcall Method 2</string>
-    <string name="uc_method_button3">Upcall Method 3</string>
-    <string name="uc_method_button4">Upcall Method 4 (NewObject)</string>
-    <string name="uc_method_button5">Upcall Method 5 (NewObjectV)</string>
-    <string name="uc_method_button6">Upcall Method 6 (NewObjectA)</string>
-    <string name="uc_method_button7">Upcall Method 7 (perf C)</string>
+    <string name="uc_method_button1">Upcall Method 1 (static)</string>
+    <string name="uc_method_button2">Upcall Method 2 (non-static)</string>
+    <string name="uc_method_button3">Upcall Method 3 (NewObject)</string>
+    <string name="uc_method_button4">Upcall Method 4 (NewObjectV)</string>
+    <string name="uc_method_button5">Upcall Method 5 (NewObjectA)</string>
+    <string name="uc_method_button6">Upcall Method 6 (performance in C level)</string>
     <string name="upcall_text">Default : JNI upcall</string>
     <!-- res/layout/activity_invoke.xml -->
     <string name="iv_method_button">Invoke Method</string>
