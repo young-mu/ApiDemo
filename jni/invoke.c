@@ -20,6 +20,7 @@ void *threadFunc(void *arg) {
     sleep(3);
 
     // child thread attachs to main thread to get JNIenv pointer
+    // after this operation, thread name will be changed as Thread-n
     JNIEnv *env = NULL;
     if ((*gjvm)->AttachCurrentThread(gjvm, &env, NULL) != JNI_OK) {
         LOGE("AttachCurrentThread failed!");
