@@ -1,14 +1,24 @@
 #include "_log.h"
-#include <string.h>
 #include <jni.h>
+#include <stdio.h>
+#include <string.h>
 #include <pthread.h>
+#include <sys/prctl.h>
 
 #define THREAD_NUM 5
 
 JavaVM *gjvm = NULL;
 jobject *gobj = NULL;
 
+const char *namePrefix = "thread";
+
 void *threadFunc(void *arg) {
+    // set thread name
+    char thrName[10];
+    snprintf(thrName, sizeof(thrName), "%s-%d", namePrefix, (int)(long)arg);
+    prctl(PR_SET_NAME, (unsigned long)thrName);
+    sleep(3);
+
     // child thread attachs to main thread to get JNIenv pointer
     JNIEnv *env = NULL;
     if ((*gjvm)->AttachCurrentThread(gjvm, &env, NULL) != JNI_OK) {

@@ -14,11 +14,11 @@
     <string name="dc_method_button4">Downcall 4 (fgets callback)</string>
     <string name="dc_method_button5">Downcall 5 (explicit dlopen)</string>
     <string name="dc_method_button6">Downcall 6 (performance test in Java level)</string>
-    <string name="downcall_text">Default : JNI downcall</string>
+    <string name="downcall_text">Default: JNI downcall</string>
     <!-- res/layout/activity_downcall_onload.xml -->
     <string name="dco_method_button1">JNIOnload downcall 1 (simple downcall)</string>
     <string name="dco_method_button2">JNIOnload downcall 2 (explicit dlopen)</string>
-    <string name="downcall_onload_text">Default : JNIOnload downcall</string>
+    <string name="downcall_onload_text">Default: JNIOnload downcall</string>
     <!-- res/layout/activity_upcall.xml -->
     <string name="uc_method_button1">Upcall Method 1 (simple upcall)</string>
     <string name="uc_method_button2">Upcall Method 2 (static)</string>
@@ -27,9 +27,10 @@
     <string name="uc_method_button5">Upcall Method 5 (NewObjectV)</string>
     <string name="uc_method_button6">Upcall Method 6 (NewObjectA)</string>
     <string name="uc_method_button7">Upcall Method 7 (performance in C level)</string>
-    <string name="upcall_text">Default : JNI upcall</string>
+    <string name="upcall_text">Default: JNI upcall</string>
     <!-- res/layout/activity_invoke.xml -->
-    <string name="iv_method_button">Invoke Method</string>
+    <string name="iv_method_button">Invoke Method (multiple threads)</string>
+    <string name="invoke_text">Default: JNI invoke</string>
     <!-- res/layout/activity_signal.xml -->
     <string name="sig_method_button">Signal Test</string>
 </resources>

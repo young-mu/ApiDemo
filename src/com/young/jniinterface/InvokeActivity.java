@@ -11,17 +11,20 @@ import android.widget.Button;
 public class InvokeActivity extends Activity {
     private static final String TAG = "JNIitf";
     private Button methodBtn;
+    private TextView invokeTxt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_invoke);
+        invokeTxt = (TextView)findViewById(R.id.invoke_text);
         // get button and set listener
         methodBtn = (Button)findViewById(R.id.iv_method_button);
         methodBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 mainThread();
+                invokeTxt.setText("OK");
             }
         });
         globalizeVar();
