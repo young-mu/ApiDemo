@@ -28,5 +28,8 @@ jstring Java_com_young_jniinterface_SignalActivity_downcallMtd1(JNIEnv *env, job
     LOGI("raise SIGUSR2");
     raise(SIGUSR2);
 
+    // TODO
+    // 1. SIGUSR1 no response
+    // 2. show this message on activity
     return (*env)->NewStringUTF(env, "Here is in signal method using raise");
 }
