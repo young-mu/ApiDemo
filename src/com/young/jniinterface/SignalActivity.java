@@ -8,22 +8,26 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
-public class SignalActivity extends Activity {
-    private static final String TAG = "JNIitf";
+public class SignalActivity extends Activity implements OnClickListener {
+    private TextView signalTxt;
     private Button methodBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signal);
-        // get button and set listener
+        signalTxt = (TextView)findViewById(R.id.signal_text);
         methodBtn = (Button)findViewById(R.id.sig_method_button);
-        methodBtn.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Log.i(TAG, downcallMtd1());
-            }
-        });
+        methodBtn.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+        case R.id.sig_method_button:
+            signalTxt.setText(downcallMtd1());
+            break;
+        }
     }
 
     public native String downcallMtd1();

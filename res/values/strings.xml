@@ -32,5 +32,6 @@
     <string name="iv_method_button">Invoke Method (multiple threads)</string>
     <string name="invoke_text">Default: JNI invoke</string>
     <!-- res/layout/activity_signal.xml -->
-    <string name="sig_method_button">Signal Test</string>
+    <string name="sig_method_button">SignalTest1 (simple singal)</string>
+    <string name="signal_text">Default: Signal Test</string>
 </resources>
