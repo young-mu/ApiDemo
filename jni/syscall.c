@@ -1,4 +1,5 @@
 #include "_log.h"
+#include <stdio.h>
 #include <jni.h>
 #include <time.h>
 
@@ -7,7 +8,11 @@ jstring Java_com_young_jniinterface_SyscallActivity_SyscallTest1(JNIEnv *env, jo
     struct timespec ts;
     ts.tv_sec = 1;
     ts.tv_nsec = 500000000;
-    nanosleep(&ts, NULL);
+    int ret;
+    ret = nanosleep(&ts, NULL);
 
-    return (*env)->NewStringUTF(env, "nanosleep for 1.5s");
+    char retstr[50];
+    snprintf(retstr, sizeof(retstr), "nanosleep for 1.5s, return %d", ret);
+
+    return (*env)->NewStringUTF(env, retstr);
 }
