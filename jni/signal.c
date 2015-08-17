@@ -14,7 +14,8 @@ void sigHandler1(int signo) {
     }
 }
 
-jstring Java_com_young_jniinterface_SignalActivity_downcallMtd1(JNIEnv *env, jobject obj) {
+jstring Java_com_young_jniinterface_SignalActivity_SignalTest1(JNIEnv *env, jobject obj) {
     signal(SIGUSR2, sigHandler1);
+    LOGI("register signal SIGUSR2 (pid = %d)", getpid());
     return (*env)->NewStringUTF(env, "register signal SIGUSR2");
 }

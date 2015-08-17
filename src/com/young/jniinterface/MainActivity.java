@@ -15,6 +15,7 @@ public class MainActivity extends Activity implements OnClickListener {
     private Button upcallBtn;
     private Button invokeBtn;
     private Button signalBtn;
+    private Button syscallBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,11 +28,13 @@ public class MainActivity extends Activity implements OnClickListener {
         upcallBtn = (Button)findViewById(R.id.upcall_button);
         invokeBtn = (Button)findViewById(R.id.invoke_button);
         signalBtn = (Button)findViewById(R.id.signal_button);
+        syscallBtn = (Button)findViewById(R.id.syscall_button);
         downcallBtn.setOnClickListener(this);
         downcallOnloadBtn.setOnClickListener(this);
         upcallBtn.setOnClickListener(this);
         invokeBtn.setOnClickListener(this);
         signalBtn.setOnClickListener(this);
+        syscallBtn.setOnClickListener(this);
     }
 
     @Override
@@ -61,6 +64,11 @@ public class MainActivity extends Activity implements OnClickListener {
             Log.i(TAG, "enter SignalActivity");
             Intent sigIntent = new Intent(MainActivity.this, SignalActivity.class);
             startActivity(sigIntent);
+            break;
+        case R.id.syscall_button:
+            Log.i(TAG, "enter SyscallActivity");
+            Intent sysIntent = new Intent(MainActivity.this, SyscallActivity.class);
+            startActivity(sysIntent);
             break;
         default:
             break;

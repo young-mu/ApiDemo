@@ -39,3 +39,9 @@ LOCAL_MODULE := signal
 LOCAL_SRC_FILES := signal.c
 LOCAL_LDLIBS := -llog
 include $(BUILD_SHARED_LIBRARY)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE := syscall
+LOCAL_SRC_FILES := syscall.c
+LOCAL_LDLIBS := -llog
+include $(BUILD_SHARED_LIBRARY)

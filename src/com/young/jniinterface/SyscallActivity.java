@@ -8,32 +8,32 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
-public class SignalActivity extends Activity implements OnClickListener {
-    private TextView SignalTxt;
+public class SyscallActivity extends Activity implements OnClickListener {
+    private TextView SyscallTxt;
     private Button methodBtn1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_signal);
+        setContentView(R.layout.activity_syscall);
         // get textview
-        SignalTxt = (TextView)findViewById(R.id.signal_text);
+        SyscallTxt = (TextView)findViewById(R.id.syscall_text);
         // get buttons and set listeners
-        methodBtn1 = (Button)findViewById(R.id.sig_method_button1);
+        methodBtn1 = (Button)findViewById(R.id.sys_method_button1);
         methodBtn1.setOnClickListener(this);
     }
 
-    public native String SignalTest1();
+    public native String SyscallTest1();
 
     static {
-        System.loadLibrary("signal");
+        System.loadLibrary("syscall");
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-        case R.id.sig_method_button1:
-            SignalTxt.setText(SignalTest1());
+        case R.id.sys_method_button1:
+            SyscallTxt.setText(SyscallTest1());
             break;
         default:
             break;
