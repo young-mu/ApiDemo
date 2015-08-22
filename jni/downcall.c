@@ -76,6 +76,9 @@ jstring Java_com_young_jniinterface_DowncallActivity_downcallMtd4(JNIEnv *env, j
     LOGI("trigger downcall! (%s)", __func__);
 
     FILE *fp = fopen("/data/young/test", "r");
+    if (fp == NULL) {
+        LOGE("open failed! (no /data/young/test file (content:12345))");
+    }
 
     // change callback
     p_read = fp->_read;
