@@ -19,3 +19,10 @@ jstring Java_com_young_jniinterface_SignalActivity_SignalTest1(JNIEnv *env, jobj
     LOGI("register signal SIGUSR2 (pid = %d)", getpid());
     return (*env)->NewStringUTF(env, "register signal SIGUSR2");
 }
+
+jstring Java_com_young_jniinterface_SignalActivity_SignalTest2(JNIEnv *env, jobject obj) {
+    int pid = getpid();
+    LOGI("send SIGUSR2 to self process (pid = %d)", getpid());
+    tkill(pid, SIGUSR2);
+    return (*env)->NewStringUTF(env, "send SIGUSR2 to self");
+}

@@ -11,6 +11,7 @@ import android.widget.Button;
 public class SignalActivity extends Activity implements OnClickListener {
     private TextView SignalTxt;
     private Button methodBtn1;
+    private Button methodBtn2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,10 +21,13 @@ public class SignalActivity extends Activity implements OnClickListener {
         SignalTxt = (TextView)findViewById(R.id.signal_text);
         // get buttons and set listeners
         methodBtn1 = (Button)findViewById(R.id.sig_method_button1);
+        methodBtn2 = (Button)findViewById(R.id.sig_method_button2);
         methodBtn1.setOnClickListener(this);
+        methodBtn2.setOnClickListener(this);
     }
 
     public native String SignalTest1();
+    public native String SignalTest2();
 
     static {
         System.loadLibrary("signal");
@@ -34,6 +38,9 @@ public class SignalActivity extends Activity implements OnClickListener {
         switch (view.getId()) {
         case R.id.sig_method_button1:
             SignalTxt.setText(SignalTest1());
+            break;
+        case R.id.sig_method_button2:
+            SignalTxt.setText(SignalTest2());
             break;
         default:
             break;

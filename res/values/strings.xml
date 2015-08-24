@@ -34,6 +34,7 @@
     <string name="invoke_text">Default: JNI invoke</string>
     <!-- res/layout/activity_signal.xml -->
     <string name="sig_method_button1">SignalTest1 (simple singal)</string>
+    <string name="sig_method_button2">SignalTest2 (tkill)</string>
     <string name="signal_text">Default: Signal Test</string>
     <!-- res/layout/activity_downcall_onload.xml -->
     <string name="sys_method_button1">SyscallTest1 (nanosleep)</string>
