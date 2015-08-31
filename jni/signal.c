@@ -31,7 +31,7 @@ jstring Java_com_young_jniinterface_SignalActivity_SignalTest2(JNIEnv *env, jobj
 void sigHandler3(int signo) {
     switch (signo) {
         case SIGSEGV:
-            LOGI("catch a signal - SIGUSR2");
+            LOGI("catch a signal - SIGSEGV");
             break;
         default:
             LOGI("wrong signo!");
@@ -43,7 +43,7 @@ jstring Java_com_young_jniinterface_SignalActivity_SignalTest3(JNIEnv *env, jobj
     struct sigaction sa;
     sa.sa_flags = SA_RESTART;
     sa.sa_handler = sigHandler3;
-    sigaction(SIGUSER1, &sa, NULL);
+    sigaction(SIGSEGV, &sa, NULL);
     LOGI("register signal SIGSEGV (pid = %d)", getpid());
     return (*env)->NewStringUTF(env, "register signal SIGSEGV");
 }

@@ -17,29 +17,29 @@
     <string name="dc_method_button6">Downcall 6 (performance test in Java level)</string>
     <string name="downcall_text">Default: JNI downcall</string>
     <!-- res/layout/activity_downcall_onload.xml -->
-    <string name="dco_method_button1">JNIOnload downcall 1 (simple downcall)</string>
-    <string name="dco_method_button2">JNIOnload downcall 2 (explicit dlopen)</string>
+    <string name="dco_method_button1">JNIOnload Downcall 1 (simple downcall)</string>
+    <string name="dco_method_button2">JNIOnload Downcall 2 (explicit dlopen)</string>
     <string name="downcall_onload_text">Default: JNIOnload downcall</string>
     <!-- res/layout/activity_upcall.xml -->
-    <string name="uc_method_button1">Upcall Method 1 (simple upcall)</string>
-    <string name="uc_method_button2">Upcall Method 2 (static)</string>
-    <string name="uc_method_button3">Upcall Method 3 (non-static)</string>
-    <string name="uc_method_button4">Upcall Method 4 (NewObject)</string>
-    <string name="uc_method_button5">Upcall Method 5 (NewObjectV)</string>
-    <string name="uc_method_button6">Upcall Method 6 (NewObjectA)</string>
-    <string name="uc_method_button7">Upcall Method 7 (performance in C level)</string>
+    <string name="uc_method_button1">Upcall 1 (simple upcall)</string>
+    <string name="uc_method_button2">Upcall 2 (static)</string>
+    <string name="uc_method_button3">Upcall 3 (non-static)</string>
+    <string name="uc_method_button4">Upcall 4 (NewObject)</string>
+    <string name="uc_method_button5">Upcall 5 (NewObjectV)</string>
+    <string name="uc_method_button6">Upcall 6 (NewObjectA)</string>
+    <string name="uc_method_button7">Upcall 7 (performance in C level)</string>
     <string name="upcall_text">Default: JNI upcall</string>
     <!-- res/layout/activity_invoke.xml -->
     <string name="iv_method_button">Invoke Method (multiple threads)</string>
     <string name="invoke_text">Default: JNI invoke</string>
     <!-- res/layout/activity_signal.xml -->
-    <string name="sig_method_button1">SignalTest1 (singal SIGUSR2)</string>
-    <string name="sig_method_button2">SignalTest2 (tkill SIGUSR2)</string>
-    <string name="sig_method_button3">SignalTest3 (sigaction SIGSEGV)</string>
-    <string name="sig_method_button4">SignalTest4 (tkill SIGSEGV)</string>
-    <string name="sig_method_button5">SignalTest5 (sigsuspend)</string>
+    <string name="sig_method_button1">Signal 1 (singal SIGUSR2)</string>
+    <string name="sig_method_button2">Signal 2 (tkill SIGUSR2)</string>
+    <string name="sig_method_button3">Signal 3 (sigaction SIGSEGV)</string>
+    <string name="sig_method_button4">Signal 4 (tkill SIGSEGV)</string>
+    <string name="sig_method_button5">Signal 5 (sigsuspend)</string>
     <string name="signal_text">Default: Signal Test</string>
     <!-- res/layout/activity_downcall_onload.xml -->
-    <string name="sys_method_button1">SyscallTest1 (nanosleep)</string>
+    <string name="sys_method_button1">Syscall 1 (nanosleep)</string>
     <string name="syscall_text">Default: Syscall Test</string>
 </resources>
