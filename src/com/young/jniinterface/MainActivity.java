@@ -1,5 +1,8 @@
 package com.young.jniinterface;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.IOException;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
@@ -7,6 +10,7 @@ import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.os.Build;
 
 public class MainActivity extends Activity implements OnClickListener {
     private static final String TAG = "JNIitf";
@@ -35,6 +39,25 @@ public class MainActivity extends Activity implements OnClickListener {
         invokeBtn.setOnClickListener(this);
         signalBtn.setOnClickListener(this);
         syscallBtn.setOnClickListener(this);
+        getSystemABI();
+    }
+
+    public void getSystemABI() {
+        // get ABI from Java level
+        Log.i(TAG, "CPU_ABI(java): " + Build.CPU_ABI);
+        String[] abis = Build.SUPPORTED_ABIS;
+        for (int i = 0; i < abis.length; i ++) {
+            Log.i(TAG, "abis[" + i + "](java): " + abis[i]);
+        }
+        // get ABI from native level
+        try {
+            Process process = Runtime.getRuntime().exec("getprop ro.product.cpu.abi");
+            InputStreamReader inputStreamReader = new InputStreamReader(process.getInputStream());
+            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+            Log.i(TAG, "CPU_ABI(native): " + bufferedReader.readLine());
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     @Override
