@@ -7,10 +7,12 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 import android.content.Intent;
+import android.content.Context;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.os.Build;
+import android.os.Environment;
 
 public class MainActivity extends Activity implements OnClickListener {
     private static final String TAG = "JNIitf";
@@ -40,6 +42,8 @@ public class MainActivity extends Activity implements OnClickListener {
         signalBtn.setOnClickListener(this);
         syscallBtn.setOnClickListener(this);
         getSystemABI();
+        getEnvironmentDirectories();
+        getApplicationDirectories(this);
     }
 
     public void getSystemABI() {
@@ -58,6 +62,23 @@ public class MainActivity extends Activity implements OnClickListener {
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    public void getEnvironmentDirectories() {
+        Log.i(TAG, "getRootDirectory(): " + Environment.getRootDirectory().toString());
+        Log.i(TAG, "getDataDirectory(): " + Environment.getDataDirectory().toString());
+        Log.i(TAG, "getDownloadCacheDirectory(): " + Environment.getDownloadCacheDirectory().toString());
+        Log.i(TAG, "getExternalStorageDirectory(): " + Environment.getExternalStorageDirectory().toString());
+        Log.i(TAG, "getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES): " + Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).toString());
+        Log.i(TAG, "isExternalStorageEmulated(): " + Environment.isExternalStorageEmulated());
+        Log.i(TAG, "isExternalStorageRemovable(): " + Environment.isExternalStorageRemovable());
+    }
+
+    public void getApplicationDirectories(Context context) {
+        Log.i(TAG, "getFilesDir(): " + context.getFilesDir().toString());
+        Log.i(TAG, "getCacheDir(): " + context.getCacheDir().toString());
+        Log.i(TAG, "getExternalFilesDir(null): " + context.getExternalFilesDir(null).toString());
+        Log.i(TAG, "getExternalCacheDir(): " + context.getExternalCacheDir().toString());
     }
 
     @Override
