@@ -2,6 +2,7 @@
 #include <string.h>
 #include <jni.h>
 #include <dlfcn.h>
+#include <sys/ptrace.h>
 
 #define NELEM(x) ((int)(sizeof(x) / sizeof(x[0])))
 
@@ -38,6 +39,26 @@ jstring DowncallOnloadActivity_downcallOnloadMtd2(JNIEnv *env, jobject obj)
     return (*env)->NewStringUTF(env, "Here is in downcall onload method 2");
 }
 
+void fork_antidebug_process_for_L(void)
+{
+    ptrace(PTRACE_TRACEME, 0, NULL, NULL);
+}
+
+void fork_antidebug_process_for_M(void)
+{
+    pid_t child;
+    child = fork();
+    if (0 == child) {
+        ptrace(PTRACE_TRACEME, 0, NULL, NULL);
+        LOGI("I will sleep for 20s");
+        sleep(20);
+        // do something secret in this child process
+    } else {
+        wait(NULL);
+        LOGI("the child has exited");
+    }
+}
+
 // const char *name, const char *signature, void *fnPtr
 static JNINativeMethod gMethods[] = {
     {"downcallOnloadMtd1", "()Ljava/lang/String;", (void*)DowncallOnloadActivity_downcallOnloadMtd1},
@@ -66,6 +87,10 @@ int JNI_OnLoad(JavaVM *vm, void *reserved)
         LOGE("RegisterNatives failed!");
         return JNI_ERR;
     }
+
+    //LOGI("fork an anti-debug process");
+    //fork_antidebug_process_for_L();
+    //fork_antidebug_process_for_M();
 
     return JNI_VERSION_1_4;
 }
