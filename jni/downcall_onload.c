@@ -39,12 +39,12 @@ jstring DowncallOnloadActivity_downcallOnloadMtd2(JNIEnv *env, jobject obj)
     return (*env)->NewStringUTF(env, "Here is in downcall onload method 2");
 }
 
-void fork_antidebug_process_for_L(void)
+void enable_antidebug(void)
 {
     ptrace(PTRACE_TRACEME, 0, NULL, NULL);
 }
 
-void fork_antidebug_process_for_M(void)
+void fork_antidebug_process_for_SELinux(void)
 {
     pid_t child;
     child = fork();
@@ -89,8 +89,8 @@ int JNI_OnLoad(JavaVM *vm, void *reserved)
     }
 
     //LOGI("fork an anti-debug process");
-    //fork_antidebug_process_for_L();
-    //fork_antidebug_process_for_M();
+    enable_antidebug();
+    //fork_antidebug_process_for_SELinux();
 
     return JNI_VERSION_1_4;
 }
