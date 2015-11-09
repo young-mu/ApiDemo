@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.young.jniinterface"
+    package="com.young.ApiDemo"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -25,31 +25,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".DowncallActivity"
-            android:label="@string/downcall_button" >
-        </activity>
 
-        <activity
-            android:name=".DowncallOnloadActivity"
-            android:label="@string/downcall_onload_button" >
-        </activity>
-        <activity
-            android:name=".UpcallActivity"
-            android:label="@string/upcall_button" >
-        </activity>
-        <activity
-            android:name=".InvokeActivity"
-            android:label="@string/invoke_button" >
-        </activity>
-        <activity
-            android:name=".SignalActivity"
-            android:label="@string/signal_button" >
-        </activity>
-        <activity
-            android:name=".SyscallActivity"
-            android:label="@string/syscall_button" >
-        </activity>
+        <activity android:name=".SdkActivity" android:label="@string/sdk_button" />
+        <activity android:name=".sdk.IpcActivity" android:label="@string/ipc_button" />
+        <activity android:name=".sdk.WidgetActivity" android:label="@string/widget_button" />
+        <activity android:name=".sdk.MiscActivity" android:label="@string/misc_button" />
+
+        <activity android:name=".NdkActivity" android:label="@string/ndk_button" />
+        <activity android:name=".ndk.JniActivity" android:label="@string/jni_button" />
+        <activity android:name=".ndk.jni.DowncallActivity" android:label="@string/downcall_button" />
+        <activity android:name=".ndk.jni.DowncallOnloadActivity" android:label="@string/downcall_onload_button" />
+        <activity android:name=".ndk.jni.UpcallActivity" android:label="@string/upcall_button" />
+        <activity android:name=".ndk.jni.InvokeActivity" android:label="@string/invoke_button" />
+        <activity android:name=".ndk.SyscallActivity" android:label="@string/syscall_button" />
+        <activity android:name=".ndk.SignalActivity" android:label="@string/signal_button" />
+
     </application>
 
 </manifest>

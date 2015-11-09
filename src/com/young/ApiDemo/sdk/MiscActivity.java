@@ -1,5 +1,6 @@
-package com.young.jniinterface;
+package com.young.ApiDemo.sdk;
 
+import com.young.ApiDemo.R;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.IOException;
@@ -22,38 +23,27 @@ import dalvik.system.DexClassLoader;
 import java.lang.reflect.Method;
 import java.lang.reflect.InvocationTargetException;
 
-public class MainActivity extends Activity implements OnClickListener {
-    private static final String TAG = "JNIitf";
-    private Button downcallBtn;
-    private Button downcallOnloadBtn;
-    private Button upcallBtn;
-    private Button invokeBtn;
-    private Button signalBtn;
-    private Button syscallBtn;
+public class MiscActivity extends Activity implements OnClickListener {
+    private static final String TAG = "ApiDemo";
+    private Button abiBtn;
+    private Button envDirBtn;
+    private Button appDirBtn;
+    private Button classLoaderBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        Log.i(TAG, "enter MainActivity");
+        setContentView(R.layout.sdk_misc);
+        Log.i(TAG, "enter SDK Misc Activity");
         // get buttons and set listeners
-        downcallBtn = (Button)findViewById(R.id.downcall_button);
-        downcallOnloadBtn = (Button)findViewById(R.id.downcall_onload_button);
-        upcallBtn = (Button)findViewById(R.id.upcall_button);
-        invokeBtn = (Button)findViewById(R.id.invoke_button);
-        signalBtn = (Button)findViewById(R.id.signal_button);
-        syscallBtn = (Button)findViewById(R.id.syscall_button);
-        downcallBtn.setOnClickListener(this);
-        downcallOnloadBtn.setOnClickListener(this);
-        upcallBtn.setOnClickListener(this);
-        invokeBtn.setOnClickListener(this);
-        signalBtn.setOnClickListener(this);
-        syscallBtn.setOnClickListener(this);
-        // other functions
-        //getSystemABI();
-        //getEnvironmentDirectories();
-        //getApplicationDirectories(this);
-        //useDexClassLoader();
+        abiBtn = (Button)findViewById(R.id.abi_button);
+        envDirBtn = (Button)findViewById(R.id.env_directory_button);
+        appDirBtn = (Button)findViewById(R.id.app_directory_button);
+        classLoaderBtn = (Button)findViewById(R.id.classloader_button);
+        abiBtn.setOnClickListener(this);
+        envDirBtn.setOnClickListener(this);
+        appDirBtn.setOnClickListener(this);
+        classLoaderBtn.setOnClickListener(this);
     }
 
     public void getSystemABI() {
@@ -63,7 +53,7 @@ public class MainActivity extends Activity implements OnClickListener {
         for (int i = 0; i < abis.length; i ++) {
             Log.i(TAG, "abis[" + i + "](java): " + abis[i]);
         }
-        // get ABI from native level
+        // get ABI from Native level
         try {
             Process process = Runtime.getRuntime().exec("getprop ro.product.cpu.abi");
             InputStreamReader inputStreamReader = new InputStreamReader(process.getInputStream());
@@ -143,35 +133,17 @@ public class MainActivity extends Activity implements OnClickListener {
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-        case R.id.downcall_button:
-            Log.i(TAG, "enter DowncallActivity");
-            Intent dIntent = new Intent(MainActivity.this, DowncallActivity.class);
-            startActivity(dIntent);
+        case R.id.abi_button:
+            getSystemABI();
             break;
-        case R.id.downcall_onload_button:
-            Log.i(TAG, "enter DowncallOnloadActivity");
-            Intent doIntent = new Intent(MainActivity.this, DowncallOnloadActivity.class);
-            startActivity(doIntent);
+        case R.id.env_directory_button:
+            getEnvironmentDirectories();
             break;
-        case R.id.upcall_button:
-            Log.i(TAG, "enter UpcallActivity");
-            Intent uIntent = new Intent(MainActivity.this, UpcallActivity.class);
-            startActivity(uIntent);
+        case R.id.app_directory_button:
+            getApplicationDirectories(this);
             break;
-        case R.id.invoke_button:
-            Log.i(TAG, "enter InvokeActivity");
-            Intent iIntent = new Intent(MainActivity.this, InvokeActivity.class);
-            startActivity(iIntent);
-            break;
-        case R.id.signal_button:
-            Log.i(TAG, "enter SignalActivity");
-            Intent sigIntent = new Intent(MainActivity.this, SignalActivity.class);
-            startActivity(sigIntent);
-            break;
-        case R.id.syscall_button:
-            Log.i(TAG, "enter SyscallActivity");
-            Intent sysIntent = new Intent(MainActivity.this, SyscallActivity.class);
-            startActivity(sysIntent);
+        case R.id.classloader_button:
+            useDexClassLoader();
             break;
         default:
             break;

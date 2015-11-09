@@ -1,14 +1,35 @@
 <resources>
     <!-- AndroidManifest.xml -->
-    <string name="app_name">JNIitf</string>
+    <string name="app_name">ApiDemo</string>
     <!-- res/layout/activity_main.xml -->
+    <string name="sdk_button">SDK</string>
+    <string name="ndk_button">NDK</string>
+    <!-- res/layout/activity_sdk.xml -->
+    <string name="ipc_button">IPC</string>
+    <string name="widget_button">Widget</string>
+    <string name="misc_button">Misc</string>
+    <!-- res/layout/sdk-ipc.xml -->
+    <string name="activity_button">Activity</string>
+    <string name="service_button">Service</string>
+    <string name="contentprovider_button">Content Provider</string>
+    <string name="broadcastreceiver_button">Broadcast Receiver</string>
+    <!-- res/layout/sdk-widget.xml -->
+    <string name="recyclerview_button">RecyclerView</string>
+    <!-- res/layout/sdk-misc.xml -->
+    <string name="abi_button">ABI</string>
+    <string name="env_directory_button">Environment Dirtecotry</string>
+    <string name="app_directory_button">Application Dirtectory</string>
+    <string name="classloader_button">Customed ClassLoader</string>
+    <!-- res/layout/activity_ndk.xml -->
+    <string name="jni_button">JNI</string>
+    <string name="signal_button">Signal</string>
+    <string name="syscall_button">Syscall</string>
+    <!-- res/layout/ndk-jni.xml -->
     <string name="downcall_button">JNI downcall</string>
     <string name="downcall_onload_button">JNI downcall (JNIOnload)</string>
     <string name="upcall_button">JNI upcall</string>
     <string name="invoke_button">JNI invoke</string>
-    <string name="signal_button">Signal Test</string>
-    <string name="syscall_button">Syscall Test</string>
-    <!-- res/layout/activity_downcall.xml -->
+    <!-- res/layout/ndk-jni-downcall.xml -->
     <string name="dc_method_button1">Downcall 1 (simple downcall)</string>
     <string name="dc_method_button2">Downcall 2 (paramters test)</string>
     <string name="dc_method_button3">Downcall 3 (funopen callback)</string>
@@ -16,11 +37,11 @@
     <string name="dc_method_button5">Downcall 5 (explicit dlopen)</string>
     <string name="dc_method_button6">Downcall 6 (performance test in Java level)</string>
     <string name="downcall_text">Default: JNI downcall</string>
-    <!-- res/layout/activity_downcall_onload.xml -->
+    <!-- res/layout/ndk-jni-downcall_onload.xml -->
     <string name="dco_method_button1">JNIOnload Downcall 1 (simple downcall)</string>
     <string name="dco_method_button2">JNIOnload Downcall 2 (explicit dlopen)</string>
     <string name="downcall_onload_text">Default: JNIOnload downcall</string>
-    <!-- res/layout/activity_upcall.xml -->
+    <!-- res/layout/ndk-jni-upcall.xml -->
     <string name="uc_method_button1">Upcall 1 (simple upcall)</string>
     <string name="uc_method_button2">Upcall 2 (static)</string>
     <string name="uc_method_button3">Upcall 3 (non-static)</string>
@@ -29,17 +50,17 @@
     <string name="uc_method_button6">Upcall 6 (NewObjectA)</string>
     <string name="uc_method_button7">Upcall 7 (performance in C level)</string>
     <string name="upcall_text">Default: JNI upcall</string>
-    <!-- res/layout/activity_invoke.xml -->
+    <!-- res/layout/ndk-jni-invoke.xml -->
     <string name="iv_method_button">Invoke Method (multiple threads)</string>
     <string name="invoke_text">Default: JNI invoke</string>
-    <!-- res/layout/activity_signal.xml -->
+    <!-- res/layout/ndk-syscall.xml -->
+    <string name="sys_method_button1">Syscall 1 (nanosleep)</string>
+    <string name="syscall_text">Default: Syscall Test</string>
+    <!-- res/layout/ndk-signal.xml -->
     <string name="sig_method_button1">Signal 1 (singal SIGUSR2)</string>
     <string name="sig_method_button2">Signal 2 (tkill SIGUSR2)</string>
     <string name="sig_method_button3">Signal 3 (sigaction SIGSEGV)</string>
     <string name="sig_method_button4">Signal 4 (tkill SIGSEGV)</string>
     <string name="sig_method_button5">Signal 5 (sigsuspend)</string>
     <string name="signal_text">Default: Signal Test</string>
-    <!-- res/layout/activity_downcall_onload.xml -->
-    <string name="sys_method_button1">Syscall 1 (nanosleep)</string>
-    <string name="syscall_text">Default: Syscall Test</string>
 </resources>

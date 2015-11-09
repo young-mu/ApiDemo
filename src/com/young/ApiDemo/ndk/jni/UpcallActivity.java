@@ -1,5 +1,6 @@
-package com.young.jniinterface;
+package com.young.ApiDemo.ndk.jni;
 
+import com.young.ApiDemo.R;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,7 +10,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 
 public class UpcallActivity extends Activity implements OnClickListener {
-    private static final String TAG = "JNIitf";
+    private static final String TAG = "ApiDemo";
     private TextView upcallTxt;
     private Button methodBtn1;
     private Button methodBtn2;
@@ -23,7 +24,8 @@ public class UpcallActivity extends Activity implements OnClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_upcall);
+        setContentView(R.layout.ndk_jni_upcall);
+        Log.i(TAG, "enter NDK JNI Upcall Activity");
         // get textview
         upcallTxt = (TextView)findViewById(R.id.upcall_text);
         // get buttons and set listeners

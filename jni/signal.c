@@ -15,13 +15,13 @@ void sigHandler1(int signo) {
     }
 }
 
-jstring Java_com_young_jniinterface_SignalActivity_SignalTest1(JNIEnv *env, jobject obj) {
+jstring Java_com_young_ApiDemo_ndk_SignalActivity_SignalTest1(JNIEnv *env, jobject obj) {
     signal(SIGUSR2, sigHandler1); // call sigaction syscall
     LOGI("register signal SIGUSR2 (pid = %d)", getpid());
     return (*env)->NewStringUTF(env, "register signal SIGUSR2");
 }
 
-jstring Java_com_young_jniinterface_SignalActivity_SignalTest2(JNIEnv *env, jobject obj) {
+jstring Java_com_young_ApiDemo_ndk_SignalActivity_SignalTest2(JNIEnv *env, jobject obj) {
     int pid = getpid();
     LOGI("send SIGUSR2 to self process (pid = %d)", getpid());
     tkill(pid, SIGUSR2);
@@ -39,7 +39,7 @@ void sigHandler3(int signo) {
     }
 }
 
-jstring Java_com_young_jniinterface_SignalActivity_SignalTest3(JNIEnv *env, jobject obj) {
+jstring Java_com_young_ApiDemo_ndk_SignalActivity_SignalTest3(JNIEnv *env, jobject obj) {
     struct sigaction sa;
     sa.sa_flags = SA_RESTART;
     sa.sa_handler = sigHandler3;
@@ -48,7 +48,7 @@ jstring Java_com_young_jniinterface_SignalActivity_SignalTest3(JNIEnv *env, jobj
     return (*env)->NewStringUTF(env, "register signal SIGSEGV");
 }
 
-jstring Java_com_young_jniinterface_SignalActivity_SignalTest4(JNIEnv *env, jobject obj) {
+jstring Java_com_young_ApiDemo_ndk_SignalActivity_SignalTest4(JNIEnv *env, jobject obj) {
     int pid = getpid();
     LOGI("send SIGSEGV to self process (pid = %d)", getpid());
     tkill(pid, SIGSEGV);
@@ -79,7 +79,7 @@ void *thrHandler5(void *arg)
     LOGI("[child %d] go on, sigsuspend returns %d", gettid(), ret);
 }
 
-jstring Java_com_young_jniinterface_SignalActivity_SignalTest5(JNIEnv *env, jobject obj) {
+jstring Java_com_young_ApiDemo_ndk_SignalActivity_SignalTest5(JNIEnv *env, jobject obj) {
     // must register SIGPIPE, or else will not execute pending SIGUSR2 sigHandler
     signal(SIGPIPE, sigHandler5);
     signal(SIGUSR2, sigHandler5);

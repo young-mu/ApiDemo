@@ -1,5 +1,6 @@
-package com.young.jniinterface;
+package com.young.ApiDemo.ndk;
 
+import com.young.ApiDemo.R;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
@@ -19,7 +20,7 @@ public class SignalActivity extends Activity implements OnClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_signal);
+        setContentView(R.layout.ndk_signal);
         // get textview
         SignalTxt = (TextView)findViewById(R.id.signal_text);
         // get buttons and set listeners

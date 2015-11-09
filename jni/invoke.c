@@ -54,13 +54,13 @@ err:
     pthread_exit(0);
 }
 
-void Java_com_young_jniinterface_InvokeActivity_globalizeVar(JNIEnv *env, jobject obj) {
+void Java_com_young_ApiDemo_ndk_jni_InvokeActivity_globalizeVar(JNIEnv *env, jobject obj) {
     LOGI("trigger downcall! (%s)", __func__);
     (*env)->GetJavaVM(env, &gjvm);
     gobj = (*env)->NewGlobalRef(env, obj);
 }
 
-void Java_com_young_jniinterface_InvokeActivity_mainThread(JNIEnv *env, jobject obj) {
+void Java_com_young_ApiDemo_ndk_jni_InvokeActivity_mainThread(JNIEnv *env, jobject obj) {
     LOGI("trigger downcall! (%s)", __func__);
     long i;
     pthread_t pt[5];

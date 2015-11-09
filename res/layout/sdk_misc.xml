@@ -9,39 +9,27 @@
     android:orientation="vertical" >
 
     <Button
-        android:id="@+id/downcall_button"
+        android:id="@+id/abi_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/downcall_button" />
+        android:text="@string/abi_button" />
 
     <Button
-        android:id="@+id/downcall_onload_button"
+        android:id="@+id/env_directory_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/downcall_onload_button" />
+        android:text="@string/env_directory_button" />
 
     <Button
-        android:id="@+id/upcall_button"
+        android:id="@+id/app_directory_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/upcall_button" />
+        android:text="@string/app_directory_button" />
 
     <Button
-        android:id="@+id/invoke_button"
+        android:id="@+id/classloader_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/invoke_button" />
-
-    <Button
-        android:id="@+id/signal_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/signal_button" />
-
-    <Button
-        android:id="@+id/syscall_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/syscall_button" />
+        android:text="@string/classloader_button" />
 
 </LinearLayout>

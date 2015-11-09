@@ -20,7 +20,7 @@ jstring DowncallOnloadActivity_downcallOnloadMtd2(JNIEnv *env, jobject obj)
     void (*callfunc)();
     const char *err = NULL;
 
-    handle = dlopen("/data/data/com.young.jniinterface/lib/libcallee.so", RTLD_NOW);
+    handle = dlopen("/data/data/com.young.ApiDemo/lib/libcallee.so", RTLD_NOW);
     if (!handle) {
         LOGI("dlopen failed! (%s)", dlerror());
         return (*env)->NewStringUTF(env, "Error: dlopen");
@@ -76,7 +76,7 @@ int JNI_OnLoad(JavaVM *vm, void *reserved)
     }
 
     jclass clazz;
-    clazz = (*env)->FindClass(env, "com/young/jniinterface/DowncallOnloadActivity");
+    clazz = (*env)->FindClass(env, "com/young/ApiDemo/ndk/jni/DowncallOnloadActivity");
     if (clazz == NULL) {
         LOGE("FindClass failed!");
         return JNI_ERR;
@@ -106,7 +106,7 @@ void JNI_OnUnload(JavaVM *vm, void *reserved)
     }
 
     jclass clazz;
-    clazz = (*env)->FindClass(env, "com/young/jniinterface/DowncallOnloadActivity");
+    clazz = (*env)->FindClass(env, "com/young/ApiDemo/ndk/jni/DowncallOnloadActivity");
     if (clazz == NULL) {
         LOGE("FindClass failed!");
         return;

@@ -1,5 +1,6 @@
-package com.young.jniinterface;
+package com.young.ApiDemo.ndk;
 
+import com.young.ApiDemo.R;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,7 +16,7 @@ public class SyscallActivity extends Activity implements OnClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_syscall);
+        setContentView(R.layout.ndk_syscall);
         // get textview
         SyscallTxt = (TextView)findViewById(R.id.syscall_text);
         // get buttons and set listeners

@@ -3,7 +3,7 @@
 #include <jni.h>
 #include <time.h>
 
-jstring Java_com_young_jniinterface_SyscallActivity_SyscallTest1(JNIEnv *env, jobject obj)
+jstring Java_com_young_ApiDemo_ndk_SyscallActivity_SyscallTest1(JNIEnv *env, jobject obj)
 {
     struct timespec ts;
     ts.tv_sec = 1;

@@ -1,5 +1,6 @@
-package com.young.jniinterface;
+package com.young.ApiDemo.ndk.jni;
 
+import com.young.ApiDemo.R;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,6 +10,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 
 public class DowncallOnloadActivity extends Activity implements OnClickListener {
+    private static final String TAG = "ApiDemo";
     private TextView downcallOnloadTxt;
     private Button methodBtn1;
     private Button methodBtn2;
@@ -16,7 +18,8 @@ public class DowncallOnloadActivity extends Activity implements OnClickListener 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_downcall_onload);
+        setContentView(R.layout.ndk_jni_downcallonload);
+        Log.i(TAG, "enter NDK JNI DowncallOnload Activity");
         // get textview
         downcallOnloadTxt = (TextView)findViewById(R.id.downcall_onload_text);
         // get buttons and set listeners
