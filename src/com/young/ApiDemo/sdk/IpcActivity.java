@@ -38,8 +38,8 @@ public class IpcActivity extends Activity implements OnClickListener {
     public void onClick(View view) {
         switch (view.getId()) {
         case R.id.activity_button:
-            Intent ipcIntent = new Intent(IpcActivity.this, ActivityActivity.class);
-            startActivity(ipcIntent);
+            Intent activityIntent = new Intent(IpcActivity.this, ActivityActivity.class);
+            startActivity(activityIntent);
             break;
         case R.id.service_button:
             break;

@@ -68,6 +68,10 @@ public class ActivityActivity extends Activity implements OnClickListener {
     public void onClick(View view) {
         switch (view.getId()) {
         case R.id.activity_start_button:
+            Intent startActivityIntent = new Intent(ActivityActivity.this, DestActivity.class);
+            startActivityIntent.putExtra("booleanValue", false);
+            startActivityIntent.putExtra("intValue", 100);
+            startActivity(startActivityIntent);
             break;
         case R.id.activity_start_for_result_button:
             break;
