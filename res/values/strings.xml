@@ -10,6 +10,8 @@
     <string name="misc_button">Misc</string>
     <!-- res/layout/sdk-ipc.xml -->
     <string name="activity_button">Activity</string>
+    <string name="activity_start_button">StartActivity</string>
+    <string name="activity_start_for_result_button">StartActivityForResult</string>
     <string name="service_button">Service</string>
     <string name="contentprovider_button">Content Provider</string>
     <string name="broadcastreceiver_button">Broadcast Receiver</string>

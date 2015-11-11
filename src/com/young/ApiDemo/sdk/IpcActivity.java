@@ -1,5 +1,6 @@
 package com.young.ApiDemo.sdk;
 
+import com.young.ApiDemo.sdk.ipc.ActivityActivity;
 import com.young.ApiDemo.R;
 import android.app.Activity;
 import android.os.Bundle;
@@ -37,6 +38,8 @@ public class IpcActivity extends Activity implements OnClickListener {
     public void onClick(View view) {
         switch (view.getId()) {
         case R.id.activity_button:
+            Intent ipcIntent = new Intent(IpcActivity.this, ActivityActivity.class);
+            startActivity(ipcIntent);
             break;
         case R.id.service_button:
             break;
