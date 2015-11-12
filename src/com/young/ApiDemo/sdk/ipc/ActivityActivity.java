@@ -65,6 +65,20 @@ public class ActivityActivity extends Activity implements OnClickListener {
     }
 
     @Override
+    // will be called when screen orientation is changed, after onPause and before onStop
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onDestroy();
+        Log.i(TAG, "activity - onSaveInstanceState");
+    }
+
+    @Override
+    // after onStart and before on Resume
+    protected void onRestoreInstanceState(Bundle savedState) {
+        super.onDestroy();
+        Log.i(TAG, "activity - onRestoreInstanceState");
+    }
+
+    @Override
     public void onClick(View view) {
         switch (view.getId()) {
         case R.id.activity_start_button:
