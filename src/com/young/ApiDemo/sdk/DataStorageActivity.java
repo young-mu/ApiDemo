@@ -11,6 +11,11 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import java.io.IOException;
+import java.io.FileNotFoundException;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileInputStream;
 
 public class DataStorageActivity extends Activity implements OnClickListener {
     private static final String TAG = "ApiDemo";
@@ -55,9 +60,61 @@ public class DataStorageActivity extends Activity implements OnClickListener {
         case R.id.cp_button:
             break;
         case R.id.file_button:
+            String filename = "file_test";
+            writeFile(filename);
+            String content = readFile(filename);
+            Log.i(TAG, "file content: " + content);
             break;
         default:
             break;
         }
+    }
+
+    public void writeFile(String filename) {
+        File fileDir = this.getFilesDir();
+        Log.i(TAG, "getFilesDir(): " + fileDir.toString());
+        File cacheDir = this.getCacheDir();
+        Log.i(TAG, "getCacheDir(): " + cacheDir.getAbsolutePath());
+        File file = new File(fileDir, filename);
+        FileOutputStream fos = null;
+        try {
+            fos = new FileOutputStream(file);
+            String str = "I'm a File";
+            byte[] buffer = str.getBytes();
+            fos.write(buffer);
+        } catch (IOException e) { // FileNotFoundException is its subclass
+            e.printStackTrace();
+        } finally {
+            if (fos != null) {
+                try {
+                    fos.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    public String readFile(String filename) {
+        String str = null;
+        FileInputStream fis = null;
+        try {
+            fis = this.openFileInput(filename); // the path is the same as getFilesDir()
+            int length = fis.available();
+            byte[] buffer = new byte[length];
+            fis.read(buffer);
+            str = new String(buffer);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (fis != null) {
+                try {
+                    fis.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return str;
     }
 }
