@@ -7,6 +7,7 @@
     <!-- res/layout/activity_sdk.xml -->
     <string name="ipc_button">IPC</string>
     <string name="widget_button">Widget</string>
+    <string name="datastorage_button">DataStorage</string>
     <string name="misc_button">Misc</string>
     <!-- res/layout/sdk_ipc.xml -->
     <string name="activity_button">Activity</string>
@@ -24,6 +25,11 @@
     <string name="destresult_activity_textview">I\'m Destination for result Activity</string>
     <!-- res/layout/sdk_widget.xml -->
     <string name="recyclerview_button">RecyclerView</string>
+    <!-- res/layout/sdk_ds.xml -->
+    <string name="sp_button">SharedPreferences</string>
+    <string name="sqlite_button">Sqlite</string>
+    <string name="cp_button">Content Provider</string>
+    <string name="file_button">File</string>
     <!-- res/layout/sdk_misc.xml -->
     <string name="abi_button">ABI</string>
     <string name="env_directory_button">Environment Dirtecotry</string>

@@ -9,27 +9,27 @@
     android:orientation="vertical" >
 
     <Button
-        android:id="@+id/ipc_button"
+        android:id="@+id/sp_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/ipc_button" />
+        android:text="@string/sp_button" />
 
     <Button
-        android:id="@+id/widget_button"
+        android:id="@+id/sqlite_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/widget_button" />
+        android:text="@string/sqlite_button" />
 
     <Button
-        android:id="@+id/datastorage_button"
+        android:id="@+id/cp_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/datastorage_button" />
+        android:text="@string/cp_button" />
 
     <Button
-        android:id="@+id/misc_button"
+        android:id="@+id/file_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/misc_button" />
+        android:text="@string/file_button" />
 
 </LinearLayout>
