@@ -86,7 +86,7 @@ public class MiscActivity extends Activity implements OnClickListener {
         PackageManager pm = getPackageManager();
         List<ResolveInfo> resolveInfos = pm.queryIntentActivities(intent, PackageManager.MATCH_ALL); // MATCH_ALL is available after API23
         if (resolveInfos.size() == 0) {
-            Log.e(TAG, "resolveInfos length is 0");
+            Log.e(TAG, "resolveInfos length is 0, CHECK if the plugin is installed");
             return;
         } else {
             for (ResolveInfo resolveInfo : resolveInfos) {
