@@ -1,5 +1,6 @@
 package com.young.ApiDemo.sdk.ipc;
 
+import java.lang.String;
 import com.young.ApiDemo.R;
 import android.app.Activity;
 import android.os.Bundle;
@@ -14,11 +15,20 @@ public class DestActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sdk_ipc_activity_dest);
         Log.i(TAG, "enter SDK IPC DestActivity Activity");
-        boolean booleanValue = getIntent().getBooleanExtra("booleanValue", true);
-        boolean booleanValue2 = getIntent().getBooleanExtra("booleanValue2", true);
-        int intValue = getIntent().getIntExtra("intValue", 200);
-        int intValue2 = getIntent().getIntExtra("intValue2", 200);
+        boolean booleanValue = this.getIntent().getBooleanExtra("booleanValue", true);
+        boolean booleanValue2 = this.getIntent().getBooleanExtra("booleanValue2", true);
+        int intValue = this.getIntent().getIntExtra("intValue", 200);
+        int intValue2 = this.getIntent().getIntExtra("intValue2", 200);
         Log.i(TAG, "booleanValue: " + booleanValue + ", intValue: " + intValue);
         Log.i(TAG, "booleanValue2: " + booleanValue2 + ", intValue2: " + intValue2);
+        Bundle bundle = this.getIntent().getExtras();
+        String stringBundle = bundle.getString("string");
+        int intBundle = bundle.getInt("int");
+        float floatBundle = bundle.getFloat("float");
+        double[] doubleArrBundle = bundle.getDoubleArray("double_array");
+        Log.i(TAG, "Bundle string: " + stringBundle);
+        Log.i(TAG, "Bundle int: " + intBundle);
+        Log.i(TAG, "Bundle float: " + floatBundle);
+        Log.i(TAG, "Bundle double array: " + doubleArrBundle[0] + ", " + doubleArrBundle[1] + ", " + doubleArrBundle[2]);
     }
 }

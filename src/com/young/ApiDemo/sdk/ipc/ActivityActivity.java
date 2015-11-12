@@ -71,12 +71,30 @@ public class ActivityActivity extends Activity implements OnClickListener {
             Intent startActivityIntent = new Intent(ActivityActivity.this, DestActivity.class);
             startActivityIntent.putExtra("booleanValue", false);
             startActivityIntent.putExtra("intValue", 100);
+            Bundle bundle = new Bundle();
+            bundle.putString("string", "hello");
+            bundle.putInt("int", 100);
+            bundle.putFloat("float", 3.14f);
+            double[] d_array = new double[]{1.1, 1.2, 1.3}; // 'new double[]' can be missed
+            bundle.putDoubleArray("double_array", d_array);
+            startActivityIntent.putExtras(bundle);
             startActivity(startActivityIntent);
             break;
         case R.id.activity_start_for_result_button:
+            Intent startActivityForResultIntent = new Intent(ActivityActivity.this, DestResultActivity.class);
+            startActivityForResult(startActivityForResultIntent, 1); // requestCode
             break;
         default:
             break;
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        super.onActivityResult(requestCode, resultCode, intent);
+        if (requestCode == 1 && resultCode == 2) {
+            String result = intent.getStringExtra("dest_result");
+            Log.i(TAG, "onActivityResult: " + result);
         }
     }
 }

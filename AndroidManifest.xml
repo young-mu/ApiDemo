@@ -30,6 +30,7 @@
         <activity android:name=".sdk.IpcActivity" android:label="@string/ipc_button" />
         <activity android:name=".sdk.ipc.ActivityActivity" android:label="@string/activity_button" />
         <activity android:name=".sdk.ipc.DestActivity" android:label="@string/activity_dest" />
+        <activity android:name=".sdk.ipc.DestResultActivity" android:label="@string/activity_destresult" />
         <activity android:name=".sdk.WidgetActivity" android:label="@string/widget_button" />
         <activity android:name=".sdk.MiscActivity" android:label="@string/misc_button" />
 

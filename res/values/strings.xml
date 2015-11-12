@@ -18,7 +18,10 @@
     <string name="activity_start_for_result_button">StartActivityForResult</string>
     <!-- res/layout/sdk_ipc_activity_dest.xml -->
     <string name="activity_dest">DestActivity</string>
-    <string name="destactivity_textview">I\'m Destination Activity</string>
+    <string name="dest_activity_textview">I\'m Destination Activity</string>
+    <!-- res/layout/sdk_ipc_activity_destresult.xml -->
+    <string name="activity_destresult">DestActivity</string>
+    <string name="destresult_activity_textview">I\'m Destination for result Activity</string>
     <!-- res/layout/sdk_widget.xml -->
     <string name="recyclerview_button">RecyclerView</string>
     <!-- res/layout/sdk_misc.xml -->
