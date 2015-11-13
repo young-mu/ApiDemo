@@ -35,8 +35,8 @@ void __attribute__((destructor(150))) fini_func3(void)
     LOGI("I'm destructor [%s] with priority 150", __func__);
 }
 
-jstring Java_com_young_ApiDemo_ndk_jni_DowncallActivity_downcallMtd1(JNIEnv *env, jobject obj) {
-    LOGI("trigger downcall! (%s)", __func__);
+jstring Java_com_young_ApiDemo_ndk_jni_DowncallActivity_simpleDowncall(JNIEnv *env, jobject obj) {
+    LOGI("enter downcall [%s]", __func__);
 
     int numUpcall = (int)(sizeof(**env) / sizeof(long));
     LOGI("number of upcalls = %d", numUpcall);
@@ -49,8 +49,8 @@ jstring Java_com_young_ApiDemo_ndk_jni_DowncallActivity_downcallMtd1(JNIEnv *env
     return (*env)->NewStringUTF(env, "Here is in downcall method 1");
 }
 
-jboolean Java_com_young_ApiDemo_ndk_jni_DowncallActivity_downcallMtd2(JNIEnv *env, jobject obj, jint i1, jlong i2, jfloat i3) {
-    LOGI("trigger downcall! (%s)", __func__);
+jboolean Java_com_young_ApiDemo_ndk_jni_DowncallActivity_paramTest(JNIEnv *env, jobject obj, jint i1, jlong i2, jfloat i3) {
+    LOGI("enter downcall [%s]", __func__);
     LOGI("i1 = %d, i2 = %llx, i3 = %f\n", i1, i2, i3);
     return ((i1 == -1) && (i2 == (jlong)0x1234567890abcdef) && (i3 == (jfloat)3.14f));
 }
@@ -60,8 +60,8 @@ int my_read(void *cookie, char *data, int n)
     return read((int)(long)cookie, data, n);
 }
 
-jstring Java_com_young_ApiDemo_ndk_jni_DowncallActivity_downcallMtd3(JNIEnv *env, jobject obj) {
-    LOGI("trigger downcall! (%s)", __func__);
+jstring Java_com_young_ApiDemo_ndk_jni_DowncallActivity_funopenCallback(JNIEnv *env, jobject obj) {
+    LOGI("enter downcall [%s]", __func__);
 
     int fd;
     FILE *fp;
@@ -69,28 +69,32 @@ jstring Java_com_young_ApiDemo_ndk_jni_DowncallActivity_downcallMtd3(JNIEnv *env
     char buf[5];
     int ret;
 
-    fd = open("/data/young/test", O_RDONLY);
+    fd = open("/data/data/com.young.ApiDemo/files/test", O_RDONLY);
     if (fd == -1) {
-        LOGE("open failed! (no /data/young/test file (content:12345))");
+        LOGE("open failed!");
+        goto out1;
     }
 
     fp = funopen((void*)(long)fd, my_read, NULL, NULL, NULL);
     if (fp == NULL) {
         LOGE("funopen failed!!");
-        close(fd);
+        goto out1;
     }
 
     ret = fread(buf, sizeof(char), 5, fp);
     if (ret != 5) {
         LOGE("fread failed!");
+        goto out2;
     }
 
     for (i = 0; i < 5; i++) {
-        LOGI("(%d): %c", i, buf[i]);
+        LOGI("buf[%d] = %c", i, buf[i]);
     }
 
-    close(fd);
+out2:
     fclose(fp);
+out1:
+    close(fd);
 
     return (*env)->NewStringUTF(env, "Here is in downcall method 3");
 }
@@ -102,29 +106,32 @@ int my_read2(void *cookie, char *data, int n)
     return p_read(cookie, data, n);
 }
 
-jstring Java_com_young_ApiDemo_ndk_jni_DowncallActivity_downcallMtd4(JNIEnv *env, jobject obj) {
-    LOGI("trigger downcall! (%s)", __func__);
+jstring Java_com_young_ApiDemo_ndk_jni_DowncallActivity_fgetsCallback(JNIEnv *env, jobject obj) {
+    LOGI("enter downcall [%s]", __func__);
 
-    FILE *fp = fopen("/data/young/test", "r");
-    if (fp == NULL) {
-        LOGE("open failed! (no /data/young/test file (content:12345))");
-    }
+    do {
+        FILE *fp = fopen("/data/data/com.young.ApiDemo/files/test", "r");
+        if (fp == NULL) {
+            LOGE("open failed!");
+            break;
+        }
 
-    // change callback
-    p_read = fp->_read;
-    fp->_read = my_read2;
+        // change callback
+        p_read = fp->_read;
+        fp->_read = my_read2;
 
-    char buf[20];
+        char buf[20];
 
-    while (fgets(buf, 10, fp) != NULL) {
-        LOGI("buf: %s", buf);
-    }
+        while (fgets(buf, 10, fp) != NULL) {
+            LOGI("buf: %s", buf);
+        }
+    } while (0);
 
     return (*env)->NewStringUTF(env, "Here is in downcall method 4");
 }
 
-jstring Java_com_young_ApiDemo_ndk_jni_DowncallActivity_downcallMtd5(JNIEnv *env, jobject obj) {
-    LOGI("trigger downcall! (%s)", __func__);
+jstring Java_com_young_ApiDemo_ndk_jni_DowncallActivity_dlopenLib(JNIEnv *env, jobject obj) {
+    LOGI("enter downcall [%s]", __func__);
 
     void *handle = NULL;
     void (*callfunc)();
@@ -155,6 +162,6 @@ jstring Java_com_young_ApiDemo_ndk_jni_DowncallActivity_downcallMtd5(JNIEnv *env
     return (*env)->NewStringUTF(env, "Here is in downcall method 5");
 }
 
-jboolean Java_com_young_ApiDemo_ndk_jni_DowncallActivity_downcallMtd6(JNIEnv *env, jobject obj, jint i1, jint i2) {
+jboolean Java_com_young_ApiDemo_ndk_jni_DowncallActivity_perfTest(JNIEnv *env, jobject obj, jint i1, jint i2) {
     return (i1 == 100 && i2 == 200);
 }

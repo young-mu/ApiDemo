@@ -8,16 +8,19 @@ import android.widget.TextView;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import java.io.File;
+import java.io.IOException;
+import java.io.FileOutputStream;
 
 public class DowncallActivity extends Activity implements OnClickListener {
     private static final String TAG = "ApiDemo";
     private TextView downcallTxt;
-    private Button methodBtn1;
-    private Button methodBtn2;
-    private Button methodBtn3;
-    private Button methodBtn4;
-    private Button methodBtn5;
-    private Button methodBtn6;
+    private Button simpleDowncallBtn;
+    private Button paramTestBtn;
+    private Button funopenCallbackBtn;
+    private Button fgetsCallbackBtn;
+    private Button dlopenLibBtn;
+    private Button perfTestBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,26 +28,49 @@ public class DowncallActivity extends Activity implements OnClickListener {
         setContentView(R.layout.ndk_jni_downcall);
         Log.i(TAG, "enter NDK JNI Downcall Activity");
         downcallTxt = (TextView)findViewById(R.id.downcall_text);
-        methodBtn1 = (Button)findViewById(R.id.dc_method_button1);
-        methodBtn2 = (Button)findViewById(R.id.dc_method_button2);
-        methodBtn3 = (Button)findViewById(R.id.dc_method_button3);
-        methodBtn4 = (Button)findViewById(R.id.dc_method_button4);
-        methodBtn5 = (Button)findViewById(R.id.dc_method_button5);
-        methodBtn6 = (Button)findViewById(R.id.dc_method_button6);
-        methodBtn1.setOnClickListener(this);
-        methodBtn2.setOnClickListener(this);
-        methodBtn3.setOnClickListener(this);
-        methodBtn4.setOnClickListener(this);
-        methodBtn5.setOnClickListener(this);
-        methodBtn6.setOnClickListener(this);
+        simpleDowncallBtn = (Button)findViewById(R.id.dc_method_button1);
+        paramTestBtn = (Button)findViewById(R.id.dc_method_button2);
+        funopenCallbackBtn = (Button)findViewById(R.id.dc_method_button3);
+        fgetsCallbackBtn = (Button)findViewById(R.id.dc_method_button4);
+        dlopenLibBtn = (Button)findViewById(R.id.dc_method_button5);
+        perfTestBtn = (Button)findViewById(R.id.dc_method_button6);
+        simpleDowncallBtn.setOnClickListener(this);
+        paramTestBtn.setOnClickListener(this);
+        funopenCallbackBtn.setOnClickListener(this);
+        fgetsCallbackBtn.setOnClickListener(this);
+        dlopenLibBtn.setOnClickListener(this);
+        perfTestBtn.setOnClickListener(this);
+        createFile();
     }
 
-    public native String downcallMtd1();
-    public native boolean downcallMtd2(int i1, long i2, float i3);
-    public native String downcallMtd3();
-    public native String downcallMtd4();
-    public native String downcallMtd5();
-    public native boolean downcallMtd6(int i1, int i2);
+    public void createFile() {
+        File fileDir = this.getFilesDir();
+        File file = new File(fileDir, "test");
+        FileOutputStream fos = null;
+        try {
+            fos = new FileOutputStream(file);
+            String str = "12345";
+            byte[] buffer = str.getBytes();
+            fos.write(buffer);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (fos != null) {
+                try {
+                    fos.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    public native String simpleDowncall();
+    public native boolean paramTest(int i1, long i2, float i3);
+    public native String funopenCallback();
+    public native String fgetsCallback();
+    public native String dlopenLib();
+    public native boolean perfTest(int i1, int i2);
 
     static {
         System.loadLibrary("downcall");
@@ -54,20 +80,20 @@ public class DowncallActivity extends Activity implements OnClickListener {
     public void onClick(View view) {
         switch (view.getId()) {
         case R.id.dc_method_button1:
-            downcallTxt.setText(downcallMtd1());
+            downcallTxt.setText(simpleDowncall());
             break;
         case R.id.dc_method_button2:
-            String ret = String.valueOf(downcallMtd2(-1, 0x1234567890abcdefL, 3.14F));
+            String ret = String.valueOf(paramTest(-1, 0x1234567890abcdefL, 3.14F));
             downcallTxt.setText(ret);
             break;
         case R.id.dc_method_button3:
-            downcallTxt.setText(downcallMtd3());
+            downcallTxt.setText(funopenCallback());
             break;
         case R.id.dc_method_button4:
-            downcallTxt.setText(downcallMtd4());
+            downcallTxt.setText(fgetsCallback());
             break;
         case R.id.dc_method_button5:
-            downcallTxt.setText(downcallMtd5());
+            downcallTxt.setText(dlopenLib());
             break;
         case R.id.dc_method_button6:
             long startTime, endTime;
@@ -76,7 +102,7 @@ public class DowncallActivity extends Activity implements OnClickListener {
             final int COUNT = 1000000;
             startTime = System.currentTimeMillis();
             for (int i = 0; i < COUNT; i++) {
-                if ((downcallMtd6(100, 200)) == true) {
+                if ((perfTest(100, 200)) == true) {
                     cnt++;
                 } else {
                     break;
