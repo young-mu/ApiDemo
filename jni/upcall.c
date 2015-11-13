@@ -9,7 +9,7 @@ jint Java_com_young_ApiDemo_ndk_jni_UpcallActivity_downcallMtd1(JNIEnv *env, job
 }
 
 jstring Java_com_young_ApiDemo_ndk_jni_UpcallActivity_downcallMtd2(JNIEnv *env, jobject obj) {
-    LOGI("trigger downcall! (%s)", __func__);
+    LOGI("enter downcall [%s]", __func__);
 
     // get class
     jclass clazz;
@@ -34,7 +34,7 @@ jstring Java_com_young_ApiDemo_ndk_jni_UpcallActivity_downcallMtd2(JNIEnv *env, 
 }
 
 jstring Java_com_young_ApiDemo_ndk_jni_UpcallActivity_downcallMtd3(JNIEnv *env, jobject obj) {
-    LOGI("trigger downcall! (%s)", __func__);
+    LOGI("enter downcall [%s]", __func__);
 
     // get class
     jclass clazz;
@@ -86,7 +86,7 @@ jstring Java_com_young_ApiDemo_ndk_jni_UpcallActivity_downcallMtd3(JNIEnv *env, 
 // NewObject
 jint Java_com_young_ApiDemo_ndk_jni_UpcallActivity_downcallMtd4(JNIEnv *env, jobject obj)
 {
-    LOGI("trigger downcall! (%s)", __func__);
+    LOGI("enter downcall [%s]", __func__);
 
     // get class
     jclass clazz;
@@ -125,7 +125,7 @@ jint Java_com_young_ApiDemo_ndk_jni_UpcallActivity_downcallMtd4(JNIEnv *env, job
 // NewObjectV
 jint Java_com_young_ApiDemo_ndk_jni_UpcallActivity_downcallMtd5(JNIEnv *env, jobject obj, ...)
 {
-    LOGI("trigger downcall! (%s)", __func__);
+    LOGI("enter downcall [%s]", __func__);
 
     // get class
     jclass clazz;
@@ -167,7 +167,7 @@ jint Java_com_young_ApiDemo_ndk_jni_UpcallActivity_downcallMtd5(JNIEnv *env, job
 // NewObjectA
 jint Java_com_young_ApiDemo_ndk_jni_UpcallActivity_downcallMtd6(JNIEnv *env, jobject obj)
 {
-    LOGI("trigger downcall! (%s)", __func__);
+    LOGI("enter downcall [%s]", __func__);
 
     // get class
     jclass clazz;
@@ -207,7 +207,7 @@ jint Java_com_young_ApiDemo_ndk_jni_UpcallActivity_downcallMtd6(JNIEnv *env, job
 
 jfloat Java_com_young_ApiDemo_ndk_jni_UpcallActivity_downcallMtd7(JNIEnv *env, jobject obj)
 {
-    LOGI("trigger downcall! (%s)", __func__);
+    LOGI("enter downcall [%s]", __func__);
 
     int i;
     struct timeval tv_start, tv_end;
