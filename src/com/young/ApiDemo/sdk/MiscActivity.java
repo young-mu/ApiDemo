@@ -19,6 +19,7 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.content.pm.ActivityInfo;
 import android.content.pm.ApplicationInfo;
+import android.telephony.TelephonyManager;
 import dalvik.system.DexClassLoader;
 import java.lang.reflect.Method;
 import java.lang.reflect.InvocationTargetException;
@@ -29,6 +30,7 @@ public class MiscActivity extends Activity implements OnClickListener {
     private Button envDirBtn;
     private Button appDirBtn;
     private Button classLoaderBtn;
+    private Button systemServiceBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,10 +42,12 @@ public class MiscActivity extends Activity implements OnClickListener {
         envDirBtn = (Button)findViewById(R.id.env_directory_button);
         appDirBtn = (Button)findViewById(R.id.app_directory_button);
         classLoaderBtn = (Button)findViewById(R.id.classloader_button);
+        systemServiceBtn = (Button)findViewById(R.id.systemservice_button);
         abiBtn.setOnClickListener(this);
         envDirBtn.setOnClickListener(this);
         appDirBtn.setOnClickListener(this);
         classLoaderBtn.setOnClickListener(this);
+        systemServiceBtn.setOnClickListener(this);
     }
 
     public void getSystemABI() {
@@ -130,6 +134,18 @@ public class MiscActivity extends Activity implements OnClickListener {
         }
     }
 
+    public void getSystemServiceInfo() {
+        TelephonyManager tm = (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE);
+        String str = null;
+        try {
+            str = tm.getDeviceId();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            Log.i(TAG, "deviceId: " + str);
+        }
+    }
+
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
@@ -145,6 +161,8 @@ public class MiscActivity extends Activity implements OnClickListener {
         case R.id.classloader_button:
             useDexClassLoader();
             break;
+        case R.id.systemservice_button:
+            getSystemServiceInfo();
         default:
             break;
         }
