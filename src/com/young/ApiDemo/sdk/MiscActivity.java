@@ -142,7 +142,7 @@ public class MiscActivity extends Activity implements OnClickListener {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            Log.i(TAG, "deviceId: " + str);
+            Log.i(TAG, "IMEI: " + str);
         }
     }
 
