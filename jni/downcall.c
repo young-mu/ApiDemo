@@ -52,7 +52,7 @@ jstring Java_com_young_ApiDemo_ndk_jni_DowncallActivity_simpleDowncall(JNIEnv *e
 jboolean Java_com_young_ApiDemo_ndk_jni_DowncallActivity_paramTest(JNIEnv *env, jobject obj, jint i1, jlong i2, jfloat i3) {
     LOGI("enter downcall [%s]", __func__);
     LOGI("i1 = %d, i2 = %llx, i3 = %f\n", i1, i2, i3);
-    return ((i1 == -1) && (i2 == (jlong)0x1234567890abcdef) && (i3 == (jfloat)3.14f));
+    return ((i1 == -1) && (i2 == (jlong)0x1234567890abcdefL) && (i3 == (jfloat)-3.14F));
 }
 
 int my_read(void *cookie, char *data, int n)

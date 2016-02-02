@@ -76,6 +76,15 @@ public class DowncallActivity extends Activity implements OnClickListener {
         System.loadLibrary("downcall");
     }
 
+    class myThread extends Thread {
+        @Override
+        public void run() {
+            super.run();
+            String ret = String.valueOf(paramTest(-1, 0x1234567890abcdefL, -3.14F));
+            Log.i(TAG, "paramTest: " + ret);
+        }
+    }
+
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
@@ -83,8 +92,13 @@ public class DowncallActivity extends Activity implements OnClickListener {
             downcallTxt.setText(simpleDowncall());
             break;
         case R.id.dc_method_button2:
-            String ret = String.valueOf(paramTest(-1, 0x1234567890abcdefL, 3.14F));
+            String ret = String.valueOf(paramTest(-1, 0x1234567890abcdefL, -3.14F));
+            Log.i(TAG, "paramTest: " + ret);
             downcallTxt.setText(ret);
+            myThread mt1 = new myThread();
+            myThread mt2 = new myThread();
+            mt1.start();
+            mt2.start();
             break;
         case R.id.dc_method_button3:
             downcallTxt.setText(funopenCallback());
